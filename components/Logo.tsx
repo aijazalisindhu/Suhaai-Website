@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const logoPaths = [
+  "/site-logo",
   "/images/logo.png",
   "/images/Logo.png",
   "/images/logo.jpg",
