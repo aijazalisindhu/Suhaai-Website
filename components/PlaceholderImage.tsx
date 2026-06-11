@@ -4,6 +4,7 @@ type PlaceholderImageProps = {
   title: string;
   category?: string;
   imageSrc?: string;
+  imageClassName?: string;
   onImageError?: () => void;
   variant?: "hero" | "card";
 };
@@ -12,6 +13,7 @@ export default function PlaceholderImage({
   title,
   category = "Suhaai Learning",
   imageSrc,
+  imageClassName = "",
   onImageError,
   variant = "card"
 }: PlaceholderImageProps) {
@@ -27,7 +29,7 @@ export default function PlaceholderImage({
           alt={title}
           fill
           sizes={variant === "hero" ? "(min-width: 1024px) 44vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
-          className="absolute inset-0 h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full object-cover ${imageClassName}`}
           onError={onImageError}
         />
       ) : (

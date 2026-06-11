@@ -1,25 +1,35 @@
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import HeroCarousel from "@/components/HeroCarousel";
+import ImpactCard from "@/components/ImpactCard";
 import InfoCard from "@/components/InfoCard";
+import MissionImage from "@/components/MissionImage";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import SectionHeading from "@/components/SectionHeading";
 import { galleryItems, programs } from "@/data/site";
 
 const impact = [
   {
+    icon: "education" as const,
+    metric: "Free Tuition Support",
     title: "Free Tuition",
     text: "Daily learning support for village students."
   },
   {
+    icon: "girls" as const,
+    metric: "205+ Students",
     title: "Girls' Education",
     text: "Encouraging girls to continue their studies with confidence."
   },
   {
+    icon: "transport" as const,
+    metric: "3 Free Rickshaws",
     title: "Free Transport",
     text: "Helping students travel safely and regularly to attend classes."
   },
   {
+    icon: "community" as const,
+    metric: "Village Community Support",
     title: "Community Support",
     text: "Building a culture of learning in Village 21 Dadh."
   }
@@ -30,12 +40,18 @@ export default function HomePage() {
     <>
       <HeroCarousel />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-suhaai-soft">
         <div className="container-shell">
           <SectionHeading title="Our Growing Impact" />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {impact.map((item) => (
-              <InfoCard key={item.title} title={item.title} text={item.text} />
+              <ImpactCard
+                key={item.title}
+                icon={item.icon}
+                metric={item.metric}
+                title={item.title}
+                text={item.text}
+              />
             ))}
           </div>
         </div>
@@ -43,15 +59,24 @@ export default function HomePage() {
 
       <section className="section-padding bg-suhaai-cream">
         <div className="container-shell grid items-center gap-10 lg:grid-cols-[0.9fr_1fr]">
-          <PlaceholderImage title="A supportive place to learn" category="Our mission" />
+          <MissionImage />
           <div>
             <SectionHeading align="left" title="Our Mission" />
-            <p className="mt-6 text-lg leading-8 text-suhaai-ink/76">
-              Suhaai aims to create a bright educational future for village girls by
-              providing free tuition, free transport, guidance, learning resources,
-              and a supportive environment where every child can learn, grow, and
-              dream with confidence.
-            </p>
+            <div className="mt-6 space-y-4 text-base leading-8 text-suhaai-ink/78 md:text-lg md:leading-9">
+              <p>
+                Suhaai is working to make quality education accessible to girls in
+                rural villages of Sindh, where many students are still unable to
+                continue their studies due to social and financial barriers.
+              </p>
+              <p>
+                We bring education directly into villages through qualified teachers,
+                free tuition, transport support, learning resources, and safe learning
+                environments where every child can learn with confidence.
+              </p>
+              <p className="border-l-4 border-suhaai-gold bg-white/60 px-5 py-4 text-lg font-black leading-8 text-suhaai-green shadow-sm md:text-xl">
+                Education should never depend on distance, poverty, or gender.
+              </p>
+            </div>
           </div>
         </div>
       </section>
