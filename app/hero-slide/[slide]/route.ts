@@ -3,6 +3,12 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const folders = [
+  ["public", "images", "gallery"],
+  ["public", "images", "Gallery"],
+  ["Public", "Images", "gallery"],
+  ["Public", "Images", "Gallery"],
+  ["public", "Images", "gallery"],
+  ["public", "Images", "Gallery"],
   ["public", "images", "hero"],
   ["Public", "Images", "Hero"],
   ["public", "Images", "Hero"],
