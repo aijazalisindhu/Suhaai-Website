@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import GalleryImageCard from "@/components/GalleryImageCard";
 import PageHero from "@/components/PageHero";
-import PlaceholderImage from "@/components/PlaceholderImage";
 import { galleryItems } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -36,8 +36,13 @@ export default function GalleryPage() {
           </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryItems.map((item) => (
-              <PlaceholderImage key={item.title} title={item.title} category={item.category} />
+            {galleryItems.map((item, index) => (
+              <GalleryImageCard
+                key={item.title}
+                index={index + 1}
+                title={item.title}
+                category={item.category}
+              />
             ))}
           </div>
 

@@ -30,7 +30,7 @@ export const galleryItems = [
   { title: "Weekly Teaching Notes", category: "Teaching Reports" },
   { title: "Community Learning Day", category: "Events" },
   { title: "Parents and Supporters", category: "Community Support" },
-  { title: "Education Awareness Poster", category: "Posters and Campaigns" },
+  { title: "Educate Girls Awareness Campaign", category: "Awareness Campaign" },
   { title: "Science Curiosity Session", category: "Classroom Activities" },
   { title: "Books and Stationery Support", category: "Community Support" }
 ];
