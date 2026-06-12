@@ -28,8 +28,10 @@ export default function PlaceholderImage({
           src={imageSrc}
           alt={title}
           fill
+          unoptimized
           sizes={variant === "hero" ? "(min-width: 1024px) 44vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
           className={`absolute inset-0 h-full w-full object-cover ${imageClassName}`}
+          priority={variant === "hero"}
           onError={onImageError}
         />
       ) : (
