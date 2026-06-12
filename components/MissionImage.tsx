@@ -7,7 +7,7 @@ export default function MissionImage() {
     <PlaceholderImage
       title="A supportive place to learn"
       category="Our mission"
-      imageSrc="/mission-image"
+      imageSrc="/hero-slide/mission"
       imageClassName="scale-x-[-1]"
     />
   );
