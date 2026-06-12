@@ -19,7 +19,7 @@ export default function PlaceholderImage({
 }: PlaceholderImageProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-3xl border border-amber-100 bg-suhaai-cream shadow-soft ${
+      className={`group relative overflow-hidden rounded-3xl border border-amber-100 bg-suhaai-cream shadow-soft transition duration-300 hover:-translate-y-1 hover:border-suhaai-gold/70 hover:shadow-[0_24px_60px_rgba(18,53,91,0.18)] ${
         variant === "hero" ? "min-h-[420px]" : "aspect-[4/3]"
       }`}
     >
@@ -30,7 +30,7 @@ export default function PlaceholderImage({
           fill
           unoptimized
           sizes={variant === "hero" ? "(min-width: 1024px) 44vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
-          className={`absolute inset-0 h-full w-full object-cover ${imageClassName}`}
+          className={`absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.04] group-hover:saturate-[1.08] ${imageClassName}`}
           priority={variant === "hero"}
           onError={onImageError}
         />
@@ -54,6 +54,10 @@ export default function PlaceholderImage({
         </>
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-suhaai-green/85 via-suhaai-green/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
+        <div className="absolute inset-0 bg-gradient-to-tr from-suhaai-gold/18 via-white/8 to-transparent" />
+        <div className="absolute inset-0 rounded-3xl ring-2 ring-inset ring-suhaai-gold/55" />
+      </div>
       <div className="absolute left-8 top-8 h-20 w-20 rounded-full bg-suhaai-gold/35 blur-2xl" />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-suhaai-green/75 to-transparent" />
       <div className="absolute inset-x-8 bottom-8">
