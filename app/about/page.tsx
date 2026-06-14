@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -446,7 +447,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             <blockquote className="rounded-3xl bg-suhaai-green p-7 text-2xl font-black leading-9 text-white shadow-soft">
-              "Education should never depend on distance, poverty, or gender."
+              &quot;Education should never depend on distance, poverty, or gender.&quot;
             </blockquote>
             <blockquote className="rounded-3xl border border-suhaai-gold/45 bg-white p-7 text-2xl font-black leading-9 text-suhaai-green shadow-soft">
               "Every girl deserves the chance to learn with dignity, safety, and
