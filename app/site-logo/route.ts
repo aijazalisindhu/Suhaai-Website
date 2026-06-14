@@ -1,52 +1,45 @@
-import { NextResponse } from "next/server";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { readFile } from "fs/promises";
+import path from "path";
 
-const folders = [
-  ["public", "images"],
-  ["public", "Images"],
-  ["Public", "images"],
-  ["Public", "Images"]
+const logoCandidates = [
+  ["public", "Images", "logo.png"],
+  ["public", "images", "logo.png"],
+  ["Public", "Images", "logo.png"],
+  ["Public", "images", "logo.png"],
+  ["public", "Images", "logo.webp"],
+  ["public", "images", "logo.webp"],
+  ["Public", "Images", "logo.webp"],
+  ["Public", "images", "logo.webp"],
+  ["public", "Images", "logo.jpg"],
+  ["public", "images", "logo.jpg"],
+  ["Public", "Images", "logo.jpg"],
+  ["Public", "images", "logo.jpg"],
 ];
 
-const files = [
-  { name: "logo.webp", type: "image/png" },
-  { name: "Logo.png", type: "image/png" },
-  { name: "logo.jpg", type: "image/jpeg" },
-  { name: "Logo.jpg", type: "image/jpeg" },
-  { name: "logo.jpeg", type: "image/jpeg" },
-  { name: "Logo.jpeg", type: "image/jpeg" },
-  { name: "logo.webp", type: "image/webp" },
-  { name: "Logo.webp", type: "image/webp" },
-  { name: "logo.svg", type: "image/svg+xml" },
-  { name: "Logo.svg", type: "image/svg+xml" }
-];
+function contentTypeFor(fileName: string) {
+  if (fileName.endsWith(".webp")) return "image/webp";
+  if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) return "image/jpeg";
+  return "image/png";
+}
 
 export async function GET() {
-  for (const folder of folders) {
-    for (const fileInfo of files) {
-      try {
-        const file = await readFile(join(process.cwd(), ...folder, fileInfo.name));
+  for (const candidate of logoCandidates) {
+    const filePath = path.join(process.cwd(), ...candidate);
 
-        return new NextResponse(new Uint8Array(file), {
-          headers: {
-            "Content-Type": fileInfo.type,
-            "Cache-Control": "public, max-age=0, must-revalidate"
-          }
-        });
-      } catch {
-        // Try the next common folder/name combination.
-      }
+    try {
+      const logo = await readFile(filePath);
+      const fileName = candidate[candidate.length - 1];
+
+      return new Response(logo, {
+        headers: {
+          "Content-Type": contentTypeFor(fileName),
+          "Cache-Control": "public, max-age=86400",
+        },
+      });
+    } catch {
+      // Try the next possible folder/name casing.
     }
   }
 
-  return new NextResponse(
-    `<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="160" rx="80" fill="#F4B942"/><text x="80" y="104" text-anchor="middle" font-family="Arial, sans-serif" font-size="82" font-weight="900" fill="#12355B">S</text></svg>`,
-    {
-      headers: {
-        "Content-Type": "image/svg+xml",
-        "Cache-Control": "public, max-age=0, must-revalidate"
-      }
-    }
-  );
+  return new Response("Logo not found", { status: 404 });
 }
