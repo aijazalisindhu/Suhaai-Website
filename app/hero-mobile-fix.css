@@ -1,27 +1,24 @@
-/* Mobile hero recovery.
-   Keep the desktop carousel untouched. On phones, keep slides as background layers
-   so they do not stack, and use a controlled height to reduce over-zoom. */
+/* Homepage mobile hero rescue.
+   This file is imported after globals.css and only overrides the hero carousel on
+   phones. It keeps slides as absolute layers and explicitly keeps content/dots
+   visible without disturbing the desktop layout. */
 @media (max-width: 767px) {
   html body section:has(img[src*="/hero-slide/"]) {
     position: relative !important;
-    display: block !important;
-    min-height: 660px !important;
-    height: 660px !important;
+    min-height: max(680px, calc(100svh - 90px)) !important;
+    height: max(680px, calc(100svh - 90px)) !important;
     overflow: hidden !important;
     background: #12355b !important;
-    padding: 0 !important;
   }
 
   html body section:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"] {
     position: absolute !important;
     inset: 0 !important;
-    display: block !important;
     width: 100% !important;
     height: 100% !important;
     max-width: none !important;
     max-height: none !important;
     object-fit: cover !important;
-    object-position: center center !important;
     transform: none !important;
   }
 
@@ -32,17 +29,17 @@
 
   html body section:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
   html body section:has(img[src*="/hero-slide/2?v="]) img[src*="/hero-slide/2?v="] {
-    object-position: 60% center !important;
+    object-position: 62% center !important;
   }
 
   html body section:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
   html body section:has(img[src*="/hero-slide/3?v="]) img[src*="/hero-slide/3?v="] {
-    object-position: 57% center !important;
+    object-position: 58% center !important;
   }
 
   html body section:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
   html body section:has(img[src*="/hero-slide/4?v="]) img[src*="/hero-slide/4?v="] {
-    object-position: 62% center !important;
+    object-position: 60% center !important;
   }
 
   html body section:has(img[src*="/hero-slide/"])::before,
@@ -51,77 +48,98 @@
     position: absolute !important;
     inset: 0 !important;
     pointer-events: none !important;
-    z-index: 1 !important;
+    z-index: 10 !important;
   }
 
   html body section:has(img[src*="/hero-slide/"])::before {
     background: linear-gradient(
       to bottom,
-      rgba(18, 53, 91, 0.12) 0%,
-      rgba(18, 53, 91, 0.34) 44%,
-      rgba(18, 53, 91, 0.82) 100%
+      rgba(18, 53, 91, 0.16) 0%,
+      rgba(18, 53, 91, 0.38) 48%,
+      rgba(18, 53, 91, 0.84) 100%
     ) !important;
   }
 
   html body section:has(img[src*="/hero-slide/"])::after {
     background: linear-gradient(
       to right,
-      rgba(18, 53, 91, 0.68) 0%,
-      rgba(18, 53, 91, 0.36) 58%,
-      rgba(18, 53, 91, 0.14) 100%
+      rgba(18, 53, 91, 0.72) 0%,
+      rgba(18, 53, 91, 0.36) 62%,
+      rgba(18, 53, 91, 0.12) 100%
     ) !important;
   }
 
-  html body section:has(img[src*="/hero-slide/"]) > *:not(img) {
-    position: relative !important;
-    z-index: 2 !important;
-  }
-
-  html body section:has(img[src*="/hero-slide/"]) > div {
-    min-height: 660px !important;
-    height: 660px !important;
+  html body section:has(img[src*="/hero-slide/"]) > div:has(h1) {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 20 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    padding: 2.25rem 1.5rem 5.25rem !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 4.5rem 1.5rem 7rem !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     transform: none !important;
   }
 
-  html body section:has(img[src*="/hero-slide/"]) > div > div {
-    max-width: 24rem !important;
+  html body section:has(img[src*="/hero-slide/"]) > div:has(h1) > div {
+    width: 100% !important;
+    max-width: 25rem !important;
     margin: 0 !important;
     transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   html body section:has(img[src*="/hero-slide/"]) h1 {
     display: block !important;
-    font-size: clamp(2rem, 9vw, 2.45rem) !important;
-    line-height: 1.08 !important;
+    color: #fff !important;
+    font-size: clamp(2.25rem, 10vw, 2.7rem) !important;
+    line-height: 1.04 !important;
     max-width: 12ch !important;
-    margin: 0 0 0.9rem !important;
+    margin: 0 0 1rem !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) h1 + * {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   html body section:has(img[src*="/hero-slide/"]) p {
-    font-size: 0.98rem !important;
+    color: #fff !important;
+    font-size: 1rem !important;
     line-height: 1.55 !important;
   }
 
   html body section:has(img[src*="/hero-slide/"]) a {
+    display: flex !important;
     width: 100% !important;
-    max-width: 23rem !important;
-    min-height: 3.4rem !important;
+    max-width: 24rem !important;
+    min-height: 3.5rem !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) button {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) > div:not(:has(h1)) {
+    z-index: 30 !important;
   }
 }
 
-@media (max-width: 430px) {
-  html body section:has(img[src*="/hero-slide/"]) {
-    min-height: 640px !important;
-    height: 640px !important;
+@media (max-width: 390px) {
+  html body section:has(img[src*="/hero-slide/"]) > div:has(h1) {
+    padding: 4rem 1.25rem 6.75rem !important;
   }
 
-  html body section:has(img[src*="/hero-slide/"]) > div {
-    min-height: 640px !important;
-    height: 640px !important;
-    padding: 2rem 1.25rem 5rem !important;
+  html body section:has(img[src*="/hero-slide/"]) h1 {
+    font-size: clamp(2.05rem, 9.4vw, 2.35rem) !important;
   }
 }
