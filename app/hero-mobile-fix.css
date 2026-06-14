@@ -1,0 +1,97 @@
+/* Mobile-only hero correction. Imported after globals.css so it overrides older tweaks. */
+@media (max-width: 767px) {
+  html body section:has(img[src*="/hero-slide/"]) {
+    min-height: 720px !important;
+    height: auto !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"] {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/1"]) img[src*="/hero-slide/1"],
+  html body section:has(img[src*="/hero-slide/1?v="]) img[src*="/hero-slide/1?v="] {
+    object-position: 52% center !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
+  html body section:has(img[src*="/hero-slide/2?v="]) img[src*="/hero-slide/2?v="] {
+    object-position: 55% center !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
+  html body section:has(img[src*="/hero-slide/3?v="]) img[src*="/hero-slide/3?v="] {
+    object-position: 54% center !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
+  html body section:has(img[src*="/hero-slide/4?v="]) img[src*="/hero-slide/4?v="] {
+    object-position: 56% center !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"])::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    background:
+      linear-gradient(to bottom, rgba(18, 53, 91, 0.08) 0%, rgba(18, 53, 91, 0.26) 45%, rgba(18, 53, 91, 0.72) 100%),
+      linear-gradient(to right, rgba(18, 53, 91, 0.62) 0%, rgba(18, 53, 91, 0.28) 58%, rgba(18, 53, 91, 0.08) 100%) !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) > *:not(img) {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) > div {
+    min-height: 720px !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding: 3.25rem 1.5rem 6rem !important;
+    transform: none !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) h1 {
+    display: block !important;
+    font-size: clamp(2rem, 8.8vw, 2.4rem) !important;
+    line-height: 1.08 !important;
+    max-width: 12ch !important;
+    margin: 0 0 0.9rem !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) p {
+    font-size: 0.98rem !important;
+    line-height: 1.55 !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) a {
+    width: 100% !important;
+    max-width: 23rem !important;
+    min-height: 3.6rem !important;
+  }
+}
+
+@media (max-width: 430px) {
+  html body section:has(img[src*="/hero-slide/"]) {
+    min-height: 700px !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) > div {
+    min-height: 700px !important;
+    padding: 2.75rem 1.25rem 5.75rem !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) h1 {
+    font-size: clamp(1.9rem, 8.4vw, 2.25rem) !important;
+  }
+}
