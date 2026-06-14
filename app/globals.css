@@ -270,3 +270,90 @@ a {
     margin-top: 0.875rem !important;
   }
 }
+/* Final mobile hero override. This intentionally beats the older mobile tweaks above. */
+@media (max-width: 767px) {
+  html body section:has(img[src*="/hero-slide/"]) {
+    min-height: 760px !important;
+    height: auto !important;
+    overflow: hidden !important;
+    display: block !important;
+    padding-top: 0 !important;
+    padding-bottom: 5.5rem !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"] {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 56% center !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/1"]) img[src*="/hero-slide/1"],
+  html body section:has(img[src*="/hero-slide/1?v="]) img[src*="/hero-slide/1?v="] {
+    object-position: 56% center !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
+  html body section:has(img[src*="/hero-slide/2?v="]) img[src*="/hero-slide/2?v="] {
+    object-position: 60% center !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
+  html body section:has(img[src*="/hero-slide/3?v="]) img[src*="/hero-slide/3?v="] {
+    object-position: 58% center !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
+  html body section:has(img[src*="/hero-slide/4?v="]) img[src*="/hero-slide/4?v="] {
+    object-position: 62% center !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"])::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    background:
+      linear-gradient(to bottom, rgba(18, 53, 91, 0.12) 0%, rgba(18, 53, 91, 0.28) 38%, rgba(18, 53, 91, 0.66) 100%),
+      linear-gradient(to right, rgba(18, 53, 91, 0.58) 0%, rgba(18, 53, 91, 0.24) 62%, rgba(18, 53, 91, 0.08) 100%) !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) > *:not(img) {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) > div,
+  html body section:has(img[src*="/hero-slide/"]) > div > div {
+    transform: none !important;
+    margin-top: 0 !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) > div {
+    min-height: 760px !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-top: 3rem !important;
+    padding-bottom: 6rem !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) h1 {
+    display: block !important;
+    font-size: clamp(2.15rem, 9.5vw, 2.55rem) !important;
+    line-height: 1.06 !important;
+    max-width: 11.5ch !important;
+    margin: 0 0 0.9rem !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) p {
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+  }
+
+  html body section:has(img[src*="/hero-slide/"]) a {
+    width: 100% !important;
+    max-width: 24rem !important;
+  }
+}
