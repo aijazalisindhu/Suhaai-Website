@@ -140,3 +140,67 @@ a {
     object-position: 70% center;
   }
 }
+@media (max-width: 767px) {
+  section:has(img[src*="/hero-slide/"]) {
+    min-height: calc(100svh - 96px) !important;
+  }
+
+  section:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"] {
+    object-fit: cover !important;
+    object-position: 82% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/1"]) img[src*="/hero-slide/1"],
+  section:has(img[src*="/hero-slide/1?v="]) img[src*="/hero-slide/1?v="] {
+    object-position: 88% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
+  section:has(img[src*="/hero-slide/2?v="]) img[src*="/hero-slide/2?v="] {
+    object-position: 78% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
+  section:has(img[src*="/hero-slide/3?v="]) img[src*="/hero-slide/3?v="] {
+    object-position: 80% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
+  section:has(img[src*="/hero-slide/4?v="]) img[src*="/hero-slide/4?v="] {
+    object-position: 86% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/"])::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom, rgba(18, 53, 91, 0.18), rgba(18, 53, 91, 0.45) 44%, rgba(18, 53, 91, 0.88)),
+      linear-gradient(to right, rgba(18, 53, 91, 0.85), rgba(18, 53, 91, 0.38) 56%, rgba(18, 53, 91, 0.12));
+    z-index: 1;
+  }
+
+  section:has(img[src*="/hero-slide/"]) > *:not(img) {
+    position: relative;
+    z-index: 2;
+  }
+
+  section:has(img[src*="/hero-slide/"]) h1 {
+    font-size: clamp(2.35rem, 11vw, 2.7rem) !important;
+    line-height: 1.04 !important;
+    max-width: 9.5ch;
+  }
+
+  section:has(img[src*="/hero-slide/"]) a,
+  section:has(img[src*="/hero-slide/"]) button {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  section:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"] {
+    object-position: 72% center !important;
+  }
+}
