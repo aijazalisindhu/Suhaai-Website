@@ -142,32 +142,32 @@ a {
 }
 @media (max-width: 767px) {
   section:has(img[src*="/hero-slide/"]) {
-    min-height: calc(100svh - 96px) !important;
+    min-height: 820px !important;
   }
 
   section:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"] {
     object-fit: cover !important;
-    object-position: 82% center !important;
+    object-position: 64% center !important;
   }
 
   section:has(img[src*="/hero-slide/1"]) img[src*="/hero-slide/1"],
   section:has(img[src*="/hero-slide/1?v="]) img[src*="/hero-slide/1?v="] {
-    object-position: 88% center !important;
+    object-position: 60% center !important;
   }
 
   section:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
   section:has(img[src*="/hero-slide/2?v="]) img[src*="/hero-slide/2?v="] {
-    object-position: 78% center !important;
+    object-position: 66% center !important;
   }
 
   section:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
   section:has(img[src*="/hero-slide/3?v="]) img[src*="/hero-slide/3?v="] {
-    object-position: 80% center !important;
+    object-position: 62% center !important;
   }
 
   section:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
   section:has(img[src*="/hero-slide/4?v="]) img[src*="/hero-slide/4?v="] {
-    object-position: 86% center !important;
+    object-position: 68% center !important;
   }
 
   section:has(img[src*="/hero-slide/"])::after {
@@ -176,8 +176,8 @@ a {
     inset: 0;
     pointer-events: none;
     background:
-      linear-gradient(to bottom, rgba(18, 53, 91, 0.18), rgba(18, 53, 91, 0.45) 44%, rgba(18, 53, 91, 0.88)),
-      linear-gradient(to right, rgba(18, 53, 91, 0.85), rgba(18, 53, 91, 0.38) 56%, rgba(18, 53, 91, 0.12));
+      linear-gradient(to bottom, rgba(18, 53, 91, 0.18), rgba(18, 53, 91, 0.42) 44%, rgba(18, 53, 91, 0.78)),
+      linear-gradient(to right, rgba(18, 53, 91, 0.72), rgba(18, 53, 91, 0.36) 56%, rgba(18, 53, 91, 0.12));
     z-index: 1;
   }
 
@@ -189,7 +189,7 @@ a {
   section:has(img[src*="/hero-slide/"]) h1 {
     font-size: clamp(2.35rem, 11vw, 2.7rem) !important;
     line-height: 1.04 !important;
-    max-width: 9.5ch;
+    max-width: 11ch;
   }
 
   section:has(img[src*="/hero-slide/"]) a,
@@ -202,5 +202,71 @@ a {
 @media (min-width: 768px) and (max-width: 1023px) {
   section:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"] {
     object-position: 72% center !important;
+  }
+}
+/* Mobile hero repair: keep desktop intact, make phone layout clean and readable. */
+@media (max-width: 767px) {
+  section:has(img[src*="/hero-slide/"]) {
+    min-height: 820px !important;
+    height: auto !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    padding-top: 4.75rem !important;
+    padding-bottom: 6.5rem !important;
+  }
+
+  section:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"] {
+    object-fit: cover !important;
+    object-position: 64% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/1"]) img[src*="/hero-slide/1"],
+  section:has(img[src*="/hero-slide/1?v="]) img[src*="/hero-slide/1?v="] {
+    object-position: 60% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
+  section:has(img[src*="/hero-slide/2?v="]) img[src*="/hero-slide/2?v="] {
+    object-position: 66% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
+  section:has(img[src*="/hero-slide/3?v="]) img[src*="/hero-slide/3?v="] {
+    object-position: 62% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
+  section:has(img[src*="/hero-slide/4?v="]) img[src*="/hero-slide/4?v="] {
+    object-position: 68% center !important;
+  }
+
+  section:has(img[src*="/hero-slide/"])::after {
+    background:
+      linear-gradient(to bottom, rgba(18, 53, 91, 0.18) 0%, rgba(18, 53, 91, 0.42) 42%, rgba(18, 53, 91, 0.78) 100%),
+      linear-gradient(to right, rgba(18, 53, 91, 0.72) 0%, rgba(18, 53, 91, 0.36) 55%, rgba(18, 53, 91, 0.12) 100%) !important;
+  }
+
+  section:has(img[src*="/hero-slide/"]) h1 {
+    display: block !important;
+    font-size: clamp(2.35rem, 10.5vw, 2.75rem) !important;
+    line-height: 1.04 !important;
+    max-width: 11ch !important;
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  section:has(img[src*="/hero-slide/"]) p {
+    font-size: 1.05rem !important;
+    line-height: 1.65 !important;
+  }
+
+  section:has(img[src*="/hero-slide/"]) a {
+    width: 100% !important;
+    max-width: 28rem !important;
+  }
+
+  section:has(img[src*="/hero-slide/"]) a + a {
+    margin-top: 0.875rem !important;
   }
 }
