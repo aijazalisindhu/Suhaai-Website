@@ -6,7 +6,7 @@ import { Fragment, useEffect, useState } from "react";
 const slides = [
   {
     desktopImage: "/hero-slide/1?v=2",
-    mobileImage: "/Images/hero/mobile/mobile-hero-1.webp",
+    mobileImage: "/images/hero/mobile/mobile-hero-1.webp",
     alt: "Suhaai students learning together",
     heading: "Illuminating Futures. Empowering Girls.",
     description:
@@ -17,7 +17,7 @@ const slides = [
   },
   {
     desktopImage: "/hero-slide/2?v=2",
-    mobileImage: "/Images/hero/mobile/mobile-hero-2.webp",
+    mobileImage: "/images/hero/mobile/mobile-hero-2.webp",
     alt: "Village girls continuing education with Suhaai",
     heading: "Free Tuition for Village Girls",
     description:
@@ -28,7 +28,7 @@ const slides = [
   },
   {
     desktopImage: "/hero-slide/3?v=2",
-    mobileImage: "/Images/hero/mobile/mobile-hero-3.webp",
+    mobileImage: "/images/hero/mobile/mobile-hero-3.webp",
     alt: "Suhaai classroom learning support",
     heading: "Learning with Confidence",
     description:
@@ -39,7 +39,7 @@ const slides = [
   },
   {
     desktopImage: "/hero-slide/4?v=2",
-    mobileImage: "/Images/hero/mobile/mobile-hero-4.webp",
+    mobileImage: "/images/hero/mobile/mobile-hero-4.webp",
     alt: "Suhaai education initiative activities",
     heading: "Safe & Free Transport Support",
     description:
