@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/hero-slide/1?v=2",
+    desktopImage: "/hero-slide/1?v=2",
+    mobileImage: "/Images/hero/mobile/mobile-hero-1.webp",
     alt: "Suhaai students learning together",
     heading: "Illuminating Futures. Empowering Girls.",
     description:
@@ -15,7 +16,8 @@ const slides = [
     headingSize: "text-[34px] sm:text-[38px] md:text-[51px] lg:text-[55px]"
   },
   {
-    src: "/hero-slide/2?v=2",
+    desktopImage: "/hero-slide/2?v=2",
+    mobileImage: "/Images/hero/mobile/mobile-hero-2.webp",
     alt: "Village girls continuing education with Suhaai",
     heading: "Free Tuition for Village Girls",
     description:
@@ -25,7 +27,8 @@ const slides = [
     headingSize: "text-[36px] sm:text-[40px] md:text-[52px] lg:text-[56px]"
   },
   {
-    src: "/hero-slide/3?v=2",
+    desktopImage: "/hero-slide/3?v=2",
+    mobileImage: "/Images/hero/mobile/mobile-hero-3.webp",
     alt: "Suhaai classroom learning support",
     heading: "Learning with Confidence",
     description:
@@ -35,7 +38,8 @@ const slides = [
     headingSize: "text-[34px] sm:text-[38px] md:text-[48px] lg:text-[52px]"
   },
   {
-    src: "/hero-slide/4?v=2",
+    desktopImage: "/hero-slide/4?v=2",
+    mobileImage: "/Images/hero/mobile/mobile-hero-4.webp",
     alt: "Suhaai education initiative activities",
     heading: "Safe & Free Transport Support",
     description:
@@ -49,7 +53,11 @@ const slides = [
 export default function HeroCarousel() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [failedImages, setFailedImages] = useState<string[]>([]);
-  const visibleSlides = slides.filter((slide) => !failedImages.includes(slide.src));
+  const visibleSlides = slides.filter(
+    (slide) =>
+      !failedImages.includes(slide.desktopImage) &&
+      !failedImages.includes(slide.mobileImage)
+  );
   const currentSlide = visibleSlides[activeSlide] || slides[0];
 
   useEffect(() => {
@@ -69,19 +77,32 @@ export default function HeroCarousel() {
   return (
     <section className="relative min-h-[calc(100vh-80px)] overflow-hidden bg-suhaai-green">
       {visibleSlides.map((slide, index) => (
-        <img
-          key={slide.src}
-          src={slide.src}
-          alt={slide.alt}
-          onError={() => {
-            setFailedImages((current) =>
-              current.includes(slide.src) ? current : [...current, slide.src]
-            );
-          }}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${slide.position} ${
-            index === activeSlide ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        <Fragment key={slide.desktopImage}>
+          <img
+            src={slide.mobileImage}
+            alt={slide.alt}
+            onError={() => {
+              setFailedImages((current) =>
+                current.includes(slide.mobileImage) ? current : [...current, slide.mobileImage]
+              );
+            }}
+            className={`absolute inset-0 block h-full w-full object-cover transition-opacity duration-1000 md:hidden ${
+              index === activeSlide ? "opacity-100" : "opacity-0"
+            }`}
+          />
+          <img
+            src={slide.desktopImage}
+            alt={slide.alt}
+            onError={() => {
+              setFailedImages((current) =>
+                current.includes(slide.desktopImage) ? current : [...current, slide.desktopImage]
+              );
+            }}
+            className={`absolute inset-0 hidden h-full w-full object-cover transition-opacity duration-1000 md:block ${slide.position} ${
+              index === activeSlide ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        </Fragment>
       ))}
 
       <div
@@ -129,7 +150,7 @@ export default function HeroCarousel() {
       <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-suhaai-green/28 px-3 py-2 shadow-lg shadow-black/15 backdrop-blur-md md:bottom-7">
         {visibleSlides.map((slide, index) => (
           <button
-            key={slide.src}
+            key={slide.desktopImage}
             type="button"
             aria-label={`Show hero image ${index + 1}`}
             onClick={() => setActiveSlide(index)}
