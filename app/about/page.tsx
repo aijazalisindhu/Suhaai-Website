@@ -21,27 +21,27 @@ const challenges = [
 const improvements = [
   {
     title: "3 New Classrooms",
-    image: "/Images/About/classrooms.webp"
+    image: "/images/about/classrooms.webp"
   },
   {
     title: "Solar Panels & Fans",
-    image: "/Images/About/solar-fans.webp"
+    image: "/images/about/solar-fans.webp"
   },
   {
     title: "Furniture",
-    image: "/Images/About/furniture.webp"
+    image: "/images/about/furniture.webp"
   },
   {
     title: "Washrooms & Washbasins",
-    image: "/Images/About/washrooms.webp"
+    image: "/images/about/washrooms.webp"
   },
   {
     title: "Book Bank & Library",
-    image: "/Images/About/book-bank-library.webp"
+    image: "/images/about/book-bank-library.webp"
   },
   {
     title: "Learning Materials",
-    image: "/Images/About/learning-materials.webp"
+    image: "/images/about/learning-materials.webp"
   }
 ];
 
@@ -121,7 +121,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden bg-suhaai-green text-white">
         <div className="absolute inset-0">
           <img
-            src="/Images/hero-1.webp"
+            src="/images/hero-1.webp"
             alt=""
             className="h-full w-full object-cover opacity-34"
           />
@@ -272,7 +272,7 @@ export default function AboutPage() {
           </div>
           <div className="overflow-hidden rounded-3xl border border-amber-100 bg-white p-2 shadow-soft">
             <img
-              src="/Images/About/transport-turning-point.webp"
+              src="/images/about/transport-turning-point.webp"
               alt="Transport support for rural students"
               className="h-[380px] w-full rounded-[1.25rem] object-cover"
             />
@@ -284,7 +284,7 @@ export default function AboutPage() {
         <div className="container-shell grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="overflow-hidden rounded-3xl border border-amber-100 bg-suhaai-cream p-2 shadow-soft">
             <img
-              src="/Images/Gallery/gallery-1.webp"
+              src="/images/gallery/gallery-1.webp"
               alt="Village classroom learning support"
               className="h-[360px] w-full rounded-[1.25rem] object-cover"
             />

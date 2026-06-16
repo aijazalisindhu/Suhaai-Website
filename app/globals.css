@@ -89,27 +89,27 @@ a {
   }
 
   section:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"],
-  section:has(img[src*="/hero-slide/"]) img[src*="/Images/hero-"] {
+  section:has(img[src*="/hero-slide/"]) img[src*="/images/hero-"] {
     object-fit: cover;
   }
 
   section:has(img[src*="/hero-slide/1"]) img[src*="/hero-slide/1"],
-  section:has(img[src*="/Images/hero-1"]) img[src*="/Images/hero-1"] {
+  section:has(img[src*="/images/hero-1"]) img[src*="/images/hero-1"] {
     object-position: 60% center;
   }
 
   section:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
-  section:has(img[src*="/Images/hero-2"]) img[src*="/Images/hero-2"] {
+  section:has(img[src*="/images/hero-2"]) img[src*="/images/hero-2"] {
     object-position: 68% center;
   }
 
   section:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
-  section:has(img[src*="/Images/hero-3"]) img[src*="/Images/hero-3"] {
+  section:has(img[src*="/images/hero-3"]) img[src*="/images/hero-3"] {
     object-position: 65% center;
   }
 
   section:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
-  section:has(img[src*="/Images/hero-4"]) img[src*="/Images/hero-4"] {
+  section:has(img[src*="/images/hero-4"]) img[src*="/images/hero-4"] {
     object-position: 70% center;
   }
 
@@ -121,22 +121,22 @@ a {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   section:has(img[src*="/hero-slide/1"]) img[src*="/hero-slide/1"],
-  section:has(img[src*="/Images/hero-1"]) img[src*="/Images/hero-1"] {
+  section:has(img[src*="/images/hero-1"]) img[src*="/images/hero-1"] {
     object-position: 62% center;
   }
 
   section:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
-  section:has(img[src*="/Images/hero-2"]) img[src*="/Images/hero-2"] {
+  section:has(img[src*="/images/hero-2"]) img[src*="/images/hero-2"] {
     object-position: 60% center;
   }
 
   section:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
-  section:has(img[src*="/Images/hero-3"]) img[src*="/Images/hero-3"] {
+  section:has(img[src*="/images/hero-3"]) img[src*="/images/hero-3"] {
     object-position: 62% center;
   }
 
   section:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
-  section:has(img[src*="/Images/hero-4"]) img[src*="/Images/hero-4"] {
+  section:has(img[src*="/images/hero-4"]) img[src*="/images/hero-4"] {
     object-position: 70% center;
   }
 }

@@ -14,37 +14,37 @@ const work = [
     icon: "book" as const,
     title: "Free Tuition Classes",
     text: "Daily subject support that helps students strengthen English, Mathematics, Science, Sindhi, and school confidence.",
-    image: "/Images/OurWork/free-tuition.webp"
+    image: "/images/our-work/free-tuition.webp"
   },
   {
     icon: "bus" as const,
     title: "Free Transport Service",
     text: "Safe transport support so distance does not stop girls from reaching class regularly.",
-    image: "/Images/OurWork/free-transport.webp"
+    image: "/images/our-work/free-transport.webp"
   },
   {
     icon: "graduation" as const,
     title: "Girls' Education Support",
     text: "Encouraging families and students to keep girls connected with learning after primary school.",
-    image: "/Images/OurWork/girls-education.webp"
+    image: "/images/our-work/girls-education.webp"
   },
   {
     icon: "users" as const,
     title: "Study Circles",
     text: "Small learning groups that build curiosity through discussion, awareness, and creative thinking.",
-    image: "/Images/OurWork/study-circles.webp"
+    image: "/images/our-work/study-circles.webp"
   },
   {
     icon: "science" as const,
     title: "Science & AI Awareness",
     text: "Simple, age-friendly exposure to science, technology, and AI for rural learners.",
-    image: "/Images/OurWork/science-ai.webp"
+    image: "/images/our-work/science-ai.webp"
   },
   {
     icon: "library" as const,
     title: "Learning Resources",
     text: "Books, stationery, classroom materials, and digital tools that make learning more accessible.",
-    image: "/Images/OurWork/learning-resources.webp"
+    image: "/images/our-work/learning-resources.webp"
   }
 ];
 

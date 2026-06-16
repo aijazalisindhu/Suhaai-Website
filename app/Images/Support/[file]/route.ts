@@ -2,11 +2,10 @@ import { readdir, readFile } from "node:fs/promises";
 import { extname, join } from "node:path";
 
 const roots = [
-  ["public", "Images", "Support"],
-  ["Public", "Images", "Support"],
+  ["public", "images", "support"],
   ["public", "images", "Support"],
-  ["public", "Images", "support"],
-  ["public", "images", "support"]
+  ["public", "Images", "Support"],
+  ["Public", "Images", "Support"]
 ];
 
 const aliases: Record<string, string[]> = {

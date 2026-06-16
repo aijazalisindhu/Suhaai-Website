@@ -11,32 +11,32 @@ const supportOptions = [
   {
     title: "Sponsor Books & Stationery",
     text: "Help students get notebooks, pencils, pens, school bags, and learning materials.",
-    image: "/Images/Support/books-stationery.webp"
+    image: "/images/support/books-stationery.webp"
   },
   {
     title: "Support Teacher Salaries",
     text: "Help us continue regular teaching support for students.",
-    image: "/Images/Support/teacher-salaries.webp"
+    image: "/images/support/teacher-salaries.webp"
   },
   {
     title: "Support Transport",
     text: "Help students travel safely to and from tuition classes.",
-    image: "/Images/Support/transport.webp"
+    image: "/images/support/transport.webp"
   },
   {
     title: "Support Classroom Resources",
     text: "Help us arrange whiteboards, chairs, mats, fans, lights, projector, and other learning tools.",
-    image: "/Images/Support/classroom-resources.webp"
+    image: "/images/support/classroom-resources.webp"
   },
   {
     title: "Sponsor a Student",
     text: "Support one student's learning journey through monthly educational assistance.",
-    image: "/Images/Support/sponsor-student.webp"
+    image: "/images/support/sponsor-student.webp"
   },
   {
     title: "Support Digital Learning Tools",
     text: "Help students access better learning through digital tools, projector-based learning, and educational technology.",
-    image: "/Images/Support/digital-learning.webp"
+    image: "/images/support/digital-learning.webp"
   }
 ];
 

@@ -2,12 +2,14 @@ import { readdir, readFile } from "node:fs/promises";
 import { extname, join } from "node:path";
 
 const roots = [
+  ["public", "images", "our-work"],
+  ["public", "images", "ourwork"],
+  ["public", "images", "OurWork"],
+  ["public", "images", "Our Work"],
   ["public", "Images", "OurWork"],
   ["public", "Images", "Our Work"],
   ["public", "Images", "our-work"],
   ["public", "Images", "ourwork"],
-  ["public", "images", "OurWork"],
-  ["public", "images", "Our Work"],
   ["Public", "Images", "OurWork"],
   ["Public", "Images", "Our Work"],
   ["public", "Images"],
