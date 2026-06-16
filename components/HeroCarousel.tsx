@@ -106,13 +106,21 @@ export default function HeroCarousel() {
       ))}
 
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 md:hidden"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(18, 53, 91, 0.30) 0%, rgba(18, 53, 91, 0.14) 54%, rgba(18, 53, 91, 0.02) 100%)"
+        }}
+      />
+      <div
+        className="absolute inset-0 hidden md:block"
         style={{
           background:
             "linear-gradient(90deg, rgba(18, 53, 91, 0.68) 0%, rgba(18, 53, 91, 0.30) 46%, rgba(18, 53, 91, 0.04) 100%)"
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-suhaai-green/22 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-suhaai-green/10 via-transparent to-transparent md:hidden" />
+      <div className="absolute inset-0 hidden bg-gradient-to-t from-suhaai-green/22 via-transparent to-transparent md:block" />
 
       <div className={`absolute z-10 -translate-y-1/2 ${currentSlide.contentClass}`}>
         <div className="animate-rise max-w-[520px]">
