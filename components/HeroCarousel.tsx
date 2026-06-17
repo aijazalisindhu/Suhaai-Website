@@ -75,7 +75,7 @@ export default function HeroCarousel() {
   }, [activeSlide, visibleSlides.length]);
 
   return (
-    <section className="hero-carousel relative min-h-[calc(100vh-80px)] overflow-hidden bg-suhaai-green">
+    <section className="hero-carousel relative isolate min-h-[calc(100vh-80px)] overflow-hidden bg-suhaai-green">
       {visibleSlides.map((slide, index) => (
         <Fragment key={slide.desktopImage}>
           <img
