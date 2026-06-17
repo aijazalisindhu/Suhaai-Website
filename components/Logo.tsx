@@ -5,24 +5,8 @@ import { useState } from "react";
 
 const logoPaths = [
   "/site-logo",
-  "/images/logo.png",
-  "/images/Logo.png",
-  "/images/logo.jpg",
-  "/images/Logo.jpg",
-  "/images/logo.jpeg",
-  "/images/Logo.jpeg",
   "/images/logo.webp",
-  "/images/Logo.webp",
-  "/images/logo.svg",
-  "/images/Logo.svg",
-  "/logo.png",
-  "/Logo.png",
-  "/logo.jpg",
-  "/Logo.jpg",
-  "/logo.jpeg",
-  "/Logo.jpeg",
-  "/logo.webp",
-  "/Logo.webp"
+  "/logo.webp"
 ];
 
 export default function Logo() {

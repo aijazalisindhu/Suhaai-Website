@@ -35,7 +35,7 @@ The project is structured so later updates can add a blog, reports, language swi
 Place your real logo at:
 
 ```text
-public/images/logo.png
+public/images/logo.webp
 ```
 
 Place your hero image at:
@@ -44,4 +44,4 @@ Place your hero image at:
 public/images/hero.jpg
 ```
 
-The website also checks common formats like `.jpg`, `.jpeg`, `.png`, and `.webp`.
+The website currently uses optimized `.webp` image assets.

@@ -99,7 +99,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-padding bg-suhaai-cream">
+      <section className="section-padding relative z-10 bg-suhaai-cream">
         <div className="container-shell grid items-center gap-10 lg:grid-cols-[0.9fr_1fr]">
           <MissionImage />
           <div>

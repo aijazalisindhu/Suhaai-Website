@@ -20,14 +20,14 @@ const folders = [
 ];
 
 const extensions = [
+  { ext: "webp", type: "image/webp" },
+  { ext: "WEBP", type: "image/webp" },
   { ext: "jpg", type: "image/jpeg" },
   { ext: "JPG", type: "image/jpeg" },
   { ext: "jpeg", type: "image/jpeg" },
   { ext: "JPEG", type: "image/jpeg" },
   { ext: "png", type: "image/png" },
-  { ext: "PNG", type: "image/png" },
-  { ext: "webp", type: "image/webp" },
-  { ext: "WEBP", type: "image/webp" }
+  { ext: "PNG", type: "image/png" }
 ];
 
 function namesFor(slide: string) {

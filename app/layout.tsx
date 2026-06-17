@@ -28,10 +28,13 @@ export const metadata: Metadata = {
     type: "website"
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", type: "image/webp" },
+      { url: "/site-logo", type: "image/webp" }
+    ],
+    shortcut: "/favicon.ico",
     apple: [
-      { url: "/images/logo.png", type: "image/png" },
-      { url: "/images/Logo.png", type: "image/png" },
+      { url: "/site-logo", type: "image/webp" },
       { url: "/apple-icon", type: "image/png" }
     ]
   }
