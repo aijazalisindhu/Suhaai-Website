@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const routes = ["", "/about", "/our-work", "/gallery", "/support-us", "/contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://suhaai.vercel.app";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://suhaai.org";
 
   return routes.map((route) => ({
     url: `${siteUrl}${route}`,

@@ -5,7 +5,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://suhaai.org";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Suhaai | Illuminating Futures. Empowering Girls.",
     template: "%s | Suhaai"
@@ -25,17 +28,34 @@ export const metadata: Metadata = {
     title: "Suhaai | Illuminating Futures. Empowering Girls.",
     description:
       "Free tuition, free transport, learning support, and opportunities for village girls in Village 21 Dadh, Sakrand.",
-    type: "website"
+    url: siteUrl,
+    siteName: "Suhaai",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Suhaai - Illuminating Futures. Empowering Girls."
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Suhaai | Illuminating Futures. Empowering Girls.",
+    description:
+      "Free tuition, free transport, learning support, and opportunities for village girls in Village 21 Dadh, Sakrand.",
+    images: ["/og-image.png"]
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", type: "image/webp" },
-      { url: "/site-logo", type: "image/webp" }
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/images/logo.webp", type: "image/webp" }
     ],
-    shortcut: "/favicon.ico",
+    shortcut: [{ url: "/favicon.ico", type: "image/x-icon" }],
     apple: [
-      { url: "/site-logo", type: "image/webp" },
-      { url: "/apple-icon", type: "image/png" }
+      { url: "/apple-icon.png", type: "image/png", sizes: "180x180" }
     ]
   }
 };

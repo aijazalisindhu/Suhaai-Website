@@ -45,3 +45,20 @@ public/images/hero.jpg
 ```
 
 The website currently uses optimized `.webp` image assets.
+
+## Contact Form Email Setup
+
+The contact form sends messages to `suhaaisindh@gmail.com` through SMTP.
+
+For deployment, add these environment variables in Vercel:
+
+```text
+CONTACT_TO=suhaaisindh@gmail.com
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=suhaaisindh@gmail.com
+SMTP_PASS=your-gmail-app-password
+SMTP_FROM=suhaaisindh@gmail.com
+```
+
+Use a Gmail app password for `SMTP_PASS`, not the normal Gmail login password.
