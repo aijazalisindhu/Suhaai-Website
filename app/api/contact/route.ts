@@ -4,14 +4,20 @@ import tls from "node:tls";
 export const runtime = "nodejs";
 
 type ContactPayload = {
+  type?: unknown;
   name?: unknown;
   email?: unknown;
+  contact?: unknown;
+  role?: unknown;
   message?: unknown;
 };
 
 type EmailMessage = {
+  type: "message" | "feedback";
   name: string;
-  email: string;
+  contact: string;
+  replyTo?: string;
+  role?: string;
   message: string;
 };
 
@@ -63,7 +69,7 @@ function openTlsSocket(host: string, port: number) {
   });
 }
 
-async function sendEmail({ name, email, message }: EmailMessage) {
+async function sendEmail({ type, name, contact, replyTo, role, message }: EmailMessage) {
   const host = process.env.SMTP_HOST || "smtp.gmail.com";
   const port = Number(process.env.SMTP_PORT || "465");
   const user = process.env.SMTP_USER;
@@ -130,21 +136,27 @@ async function sendEmail({ name, email, message }: EmailMessage) {
     await command(`RCPT TO:<${to}>`, [250, 251]);
     await command("DATA", [354]);
 
-    const subject = `New message from Suhaai website - ${name}`;
+    const subject =
+      type === "feedback"
+        ? `New feedback for Suhaai review - ${name}`
+        : `New message from Suhaai website - ${name}`;
     const body = [
-      "A new message was submitted from the Suhaai website contact form.",
+      type === "feedback"
+        ? "New feedback was submitted from the Suhaai website for review and approval."
+        : "A new message was submitted from the Suhaai website contact form.",
       "",
       `Name: ${name}`,
-      `Email: ${email}`,
+      `${type === "feedback" ? "Email or WhatsApp" : "Email"}: ${contact}`,
+      ...(role ? [`Role / Relationship: ${role}`] : []),
       "",
-      "Message:",
+      type === "feedback" ? "Feedback:" : "Message:",
       message
     ].join("\r\n");
 
     const emailContent = [
       `From: ${encodeHeader("Suhaai Website")} <${from}>`,
       `To: <${to}>`,
-      `Reply-To: ${encodeHeader(name)} <${email}>`,
+      ...(replyTo ? [`Reply-To: ${encodeHeader(name)} <${replyTo}>`] : []),
       `Subject: ${encodeHeader(subject)}`,
       "MIME-Version: 1.0",
       'Content-Type: text/plain; charset="UTF-8"',
@@ -181,7 +193,47 @@ export async function POST(request: Request) {
 
   const name = cleanText(payload.name, 120);
   const email = cleanText(payload.email, 180);
+  const contact = cleanText(payload.contact, 180);
+  const role = cleanText(payload.role, 120);
   const message = cleanText(payload.message, 3000);
+  const type = payload.type === "feedback" ? "feedback" : "message";
+
+  if (type === "feedback") {
+    if (!name || !contact || !role || !message) {
+      return NextResponse.json(
+        {
+          message:
+            "Please fill in your name, contact details, role, and feedback message."
+        },
+        { status: 400 }
+      );
+    }
+
+    try {
+      await sendEmail({
+        type,
+        name,
+        contact,
+        replyTo: isValidEmail(contact) ? contact : undefined,
+        role,
+        message
+      });
+
+      return NextResponse.json({
+        message: "Thank you. Your feedback has been sent to Suhaai for review."
+      });
+    } catch (error) {
+      console.error(error);
+
+      return NextResponse.json(
+        {
+          message:
+            "Feedback could not be sent right now. Please email suhaaisindh@gmail.com directly."
+        },
+        { status: 500 }
+      );
+    }
+  }
 
   if (!name || !email || !message || !isValidEmail(email)) {
     return NextResponse.json(
@@ -191,7 +243,13 @@ export async function POST(request: Request) {
   }
 
   try {
-    await sendEmail({ name, email, message });
+    await sendEmail({
+      type,
+      name,
+      contact: email,
+      replyTo: email,
+      message
+    });
 
     return NextResponse.json({
       message: "Thank you. Your message has been sent to Suhaai."

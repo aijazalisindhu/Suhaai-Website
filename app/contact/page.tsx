@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import FeedbackForm from "@/components/FeedbackForm";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
@@ -141,6 +142,28 @@ export default function ContactPage() {
             </div>
 
             <ContactForm />
+          </div>
+        </div>
+      </section>
+
+      <section id="feedback" className="section-padding bg-suhaai-cream">
+        <div className="container-shell">
+          <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="rounded-3xl bg-suhaai-green p-7 text-white shadow-soft md:p-9">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-suhaai-gold">
+                Voices of Support
+              </p>
+              <h2 className="mt-3 text-3xl font-black md:text-4xl">
+                Share words that help Suhaai improve and grow
+              </h2>
+              <p className="mt-5 text-base font-semibold leading-8 text-suhaai-cream/86">
+                Feedback is sent privately to the Suhaai team. Selected approved
+                testimonials may be displayed later, but nothing is published
+                automatically.
+              </p>
+            </div>
+
+            <FeedbackForm />
           </div>
         </div>
       </section>
