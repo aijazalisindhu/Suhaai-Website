@@ -8,6 +8,7 @@ import MissionImage from "@/components/MissionImage";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import ProgramPreviewCard from "@/components/ProgramPreviewCard";
 import SectionHeading from "@/components/SectionHeading";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import { galleryItems } from "@/data/site";
 
 const impact = [
@@ -96,58 +97,6 @@ const programPreviews = [
     text: "Books, stationery, and tools that make learning easier."
   }
 ];
-
-const testimonials = [
-  {
-    quote:
-      "Suhaai is creating a safe and hopeful learning space for girls who deserve every opportunity to continue their education.",
-    name: "Ayesha Khan",
-    role: "Donor",
-    initials: "AK",
-    icon: "donor" as const
-  },
-  {
-    quote:
-      "The free tuition and transport support have made learning more consistent for children in our village.",
-    name: "Muhammad Ali",
-    role: "Parent",
-    initials: "MA",
-    icon: "parent" as const
-  },
-  {
-    quote:
-      "Suhaai is building confidence, discipline, and curiosity among students through regular support and encouragement.",
-    name: "Sadia Bano",
-    role: "Teacher",
-    initials: "SB",
-    icon: "teacher" as const
-  }
-];
-
-const testimonialIcons = {
-  donor: (
-    <>
-      <path d="M12 20s-6.5-3.8-8.2-8.2C2.6 8.7 4.5 6 7.5 6c1.8 0 3.1 1 4.5 2.5C13.4 7 14.7 6 16.5 6c3 0 4.9 2.7 3.7 5.8C18.5 16.2 12 20 12 20Z" />
-      <path d="M8.5 12.4h2.2l1.3-2.2 1.3 3.8 1.3-1.6h2.9" />
-    </>
-  ),
-  parent: (
-    <>
-      <circle cx="8.3" cy="8.2" r="2.8" />
-      <circle cx="15.7" cy="8.2" r="2.8" />
-      <path d="M3.8 19c.7-2.8 2.2-4.2 4.5-4.2s3.8 1.4 4.5 4.2" />
-      <path d="M11.2 19c.7-2.8 2.2-4.2 4.5-4.2s3.8 1.4 4.5 4.2" />
-    </>
-  ),
-  teacher: (
-    <>
-      <path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v16H7.5A2.5 2.5 0 0 0 5 21.5v-16Z" />
-      <path d="M5 18.5A2.5 2.5 0 0 1 7.5 16H19" />
-      <path d="M9 7h6" />
-      <path d="M9 10h4" />
-    </>
-  )
-};
 
 export default function HomePage() {
   return (
@@ -248,63 +197,7 @@ export default function HomePage() {
         href="/support-us"
       />
 
-      <section className="section-padding bg-white">
-        <div className="container-shell">
-          <SectionHeading
-            title="Voices of Support"
-            description="Selected words from people who believe in Suhaai's mission. Feedback is reviewed before it is shared publicly."
-          />
-
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <article
-                key={testimonial.name}
-                className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-suhaai-gold/24 bg-[#FFFDF8] p-6 shadow-[0_18px_45px_rgba(18,53,91,0.07)] transition duration-300 hover:-translate-y-1 hover:border-suhaai-gold/55 hover:shadow-[0_22px_55px_rgba(18,53,91,0.10)] md:p-7"
-              >
-                <div className="relative flex items-center gap-4">
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-4 border-white bg-suhaai-cream text-xl font-black text-suhaai-green shadow-sm ring-1 ring-suhaai-gold/35">
-                    {testimonial.initials}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-base font-black leading-6 text-suhaai-green md:text-lg">
-                      {testimonial.name}
-                    </p>
-                    <p className="mt-1 flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-suhaai-gold">
-                      <svg
-                        aria-hidden="true"
-                        className="h-3.5 w-3.5 shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="1.9"
-                        viewBox="0 0 24 24"
-                      >
-                        {testimonialIcons[testimonial.icon]}
-                      </svg>
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </div>
-
-                <blockquote className="mt-7 flex-1 text-base font-semibold leading-8 text-suhaai-ink/78">
-                  {testimonial.quote}
-                </blockquote>
-                <div className="mt-7 h-1.5 w-16 rounded-full bg-suhaai-gold/70" />
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-10 pb-4 text-center md:pb-6">
-            <Link
-              href="/contact#feedback"
-              className="inline-flex rounded-full bg-suhaai-gold px-8 py-4 text-sm font-black text-suhaai-green shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-[#e2a92f] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-suhaai-gold focus:ring-offset-2"
-            >
-              Share Your Feedback
-            </Link>
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       <section className="section-padding bg-suhaai-soft">
         <div className="container-shell">
