@@ -3,6 +3,7 @@ import Image from "next/image";
 type PlaceholderImageProps = {
   title: string;
   category?: string;
+  caption?: string;
   imageSrc?: string;
   imageClassName?: string;
   onImageError?: () => void;
@@ -12,6 +13,7 @@ type PlaceholderImageProps = {
 export default function PlaceholderImage({
   title,
   category = "Suhaai Learning",
+  caption,
   imageSrc,
   imageClassName = "",
   onImageError,
@@ -28,7 +30,6 @@ export default function PlaceholderImage({
           src={imageSrc}
           alt={title}
           fill
-          unoptimized
           sizes={variant === "hero" ? "(min-width: 1024px) 44vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
           className={`absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.04] group-hover:saturate-[1.08] ${imageClassName}`}
           priority={variant === "hero"}
@@ -65,6 +66,11 @@ export default function PlaceholderImage({
           {category}
         </span>
         <h3 className="mt-3 text-2xl font-black text-white drop-shadow">{title}</h3>
+        {caption ? (
+          <p className="mt-2 text-sm font-semibold leading-6 text-white/90 drop-shadow">
+            {caption}
+          </p>
+        ) : null}
       </div>
     </div>
   );

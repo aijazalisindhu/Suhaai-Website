@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 const categories = [
   "Classroom Activities",
   "Students Learning",
-  "Teaching Reports",
-  "Events",
+  "Science Learning",
   "Community Support",
-  "Posters and Campaigns"
+  "Digital Learning",
+  "Learning Resources"
 ];
 
 export default function GalleryPage() {
@@ -42,13 +42,10 @@ export default function GalleryPage() {
                 index={index + 1}
                 title={item.title}
                 category={item.category}
+                caption={item.caption}
               />
             ))}
           </div>
-
-          <p className="mt-8 rounded-2xl bg-suhaai-cream p-5 text-center text-sm font-semibold text-suhaai-green">
-            Real photos and updates can be added later.
-          </p>
         </div>
       </section>
     </>

@@ -1,7 +1,7 @@
 import { socials } from "@/data/site";
 
 export default function WhatsAppButton() {
-  const whatsappHref = socials.find((social) => social.label === "WhatsApp")?.href ?? "https://wa.me/0000000000";
+  const whatsappHref = socials.find((social) => social.label === "WhatsApp")?.href ?? "https://wa.me/923450122664";
 
   return (
     <a

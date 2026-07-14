@@ -10,6 +10,8 @@ type ContactPayload = {
   contact?: unknown;
   role?: unknown;
   message?: unknown;
+  website?: unknown;
+  startedAt?: unknown;
 };
 
 type EmailMessage = {
@@ -21,6 +23,10 @@ type EmailMessage = {
   message: string;
 };
 
+const rateLimitWindowMs = 15 * 60 * 1000;
+const maxSubmissionsPerWindow = 5;
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
+
 function cleanText(value: unknown, maxLength: number) {
   if (typeof value !== "string") return "";
 
@@ -29,6 +35,47 @@ function cleanText(value: unknown, maxLength: number) {
     .replace(/\0/g, "")
     .trim()
     .slice(0, maxLength);
+}
+
+function getClientKey(request: Request) {
+  const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const realIp = request.headers.get("x-real-ip")?.trim();
+
+  return forwardedFor || realIp || "unknown";
+}
+
+function isRateLimited(key: string) {
+  const now = Date.now();
+  const current = rateLimitStore.get(key);
+
+  if (!current || current.resetAt <= now) {
+    rateLimitStore.set(key, { count: 1, resetAt: now + rateLimitWindowMs });
+    return false;
+  }
+
+  if (current.count >= maxSubmissionsPerWindow) {
+    return true;
+  }
+
+  current.count += 1;
+  return false;
+}
+
+function isSameOrigin(request: Request) {
+  const origin = request.headers.get("origin");
+  if (!origin) return true;
+
+  return origin === new URL(request.url).origin;
+}
+
+function hasHumanTiming(value: unknown) {
+  const startedAt =
+    typeof value === "string" || typeof value === "number" ? Number(value) : NaN;
+
+  if (!Number.isFinite(startedAt)) return false;
+
+  const elapsed = Date.now() - startedAt;
+  return elapsed >= 3000 && elapsed <= 2 * 60 * 60 * 1000;
 }
 
 function isValidEmail(email: string) {
@@ -182,6 +229,20 @@ async function sendEmail({ type, name, contact, replyTo, role, message }: EmailM
 export async function POST(request: Request) {
   let payload: ContactPayload;
 
+  if (!isSameOrigin(request)) {
+    return NextResponse.json(
+      { message: "Invalid form submission." },
+      { status: 403 }
+    );
+  }
+
+  if (isRateLimited(getClientKey(request))) {
+    return NextResponse.json(
+      { message: "Too many submissions. Please try again later." },
+      { status: 429 }
+    );
+  }
+
   try {
     payload = await request.json();
   } catch {
@@ -197,6 +258,20 @@ export async function POST(request: Request) {
   const role = cleanText(payload.role, 120);
   const message = cleanText(payload.message, 3000);
   const type = payload.type === "feedback" ? "feedback" : "message";
+  const website = cleanText(payload.website, 180);
+
+  if (website) {
+    return NextResponse.json({
+      message: "Thank you. Your message has been sent to Suhaai."
+    });
+  }
+
+  if (!hasHumanTiming(payload.startedAt)) {
+    return NextResponse.json(
+      { message: "Please wait a moment before submitting the form." },
+      { status: 400 }
+    );
+  }
 
   if (type === "feedback") {
     if (!name || !contact || !role || !message) {

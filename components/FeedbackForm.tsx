@@ -5,6 +5,7 @@ import { FormEvent, useState } from "react";
 export default function FeedbackForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const [startedAt, setStartedAt] = useState(() => Date.now());
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,7 +27,9 @@ export default function FeedbackForm() {
           name: formData.get("name"),
           contact: formData.get("contact"),
           role: formData.get("role"),
-          message: formData.get("message")
+          message: formData.get("message"),
+          website: formData.get("website"),
+          startedAt: formData.get("startedAt")
         })
       });
 
@@ -41,6 +44,7 @@ export default function FeedbackForm() {
         result.message || "Thank you. Your feedback has been sent for review."
       );
       form.reset();
+      setStartedAt(Date.now());
     } catch (error) {
       setStatus("error");
       setStatusMessage(
@@ -76,6 +80,17 @@ export default function FeedbackForm() {
       </p>
 
       <div className="mt-6 grid gap-5">
+        <input type="hidden" name="startedAt" value={startedAt} />
+        <label className="sr-only" aria-hidden="true">
+          Website
+          <input
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </label>
+
         <label className="grid gap-2 text-sm font-extrabold text-suhaai-green">
           Full Name
           <input
@@ -142,3 +157,4 @@ export default function FeedbackForm() {
     </form>
   );
 }
+

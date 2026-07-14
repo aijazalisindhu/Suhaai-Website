@@ -68,13 +68,13 @@ a {
     z-index: 1;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/"]) {
+  .hero-carousel:has(img[src*="/images/hero-"]) {
     min-height: calc(100vh - 96px);
     padding-bottom: 96px;
     position: relative;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/"])::after {
+  .hero-carousel:has(img[src*="/images/hero-"])::after {
     background: linear-gradient(
       to bottom,
       rgba(18, 53, 91, 0.14) 0%,
@@ -88,59 +88,50 @@ a {
     z-index: 5;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/"]) .container-shell {
+  .hero-carousel:has(img[src*="/images/hero-"]) .container-shell {
     position: relative;
     z-index: 10;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/"]) img[src*="/hero-slide/"],
-  .hero-carousel:has(img[src*="/hero-slide/"]) img[src*="/images/hero-"] {
+  .hero-carousel:has(img[src*="/images/hero-"]) img[src*="/images/hero-"] {
     object-fit: cover;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/1"]) img[src*="/hero-slide/1"],
   .hero-carousel:has(img[src*="/images/hero-1"]) img[src*="/images/hero-1"] {
     object-position: 60% center;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
   .hero-carousel:has(img[src*="/images/hero-2"]) img[src*="/images/hero-2"] {
     object-position: 68% center;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
   .hero-carousel:has(img[src*="/images/hero-3"]) img[src*="/images/hero-3"] {
     object-position: 65% center;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
   .hero-carousel:has(img[src*="/images/hero-4"]) img[src*="/images/hero-4"] {
     object-position: 70% center;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/"]) h1 {
+  .hero-carousel:has(img[src*="/images/hero-"]) h1 {
     font-size: clamp(2.5rem, 11vw, 3.35rem);
     line-height: 1.05;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .hero-carousel:has(img[src*="/hero-slide/1"]) img[src*="/hero-slide/1"],
   .hero-carousel:has(img[src*="/images/hero-1"]) img[src*="/images/hero-1"] {
     object-position: 62% center;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/2"]) img[src*="/hero-slide/2"],
   .hero-carousel:has(img[src*="/images/hero-2"]) img[src*="/images/hero-2"] {
     object-position: 60% center;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/3"]) img[src*="/hero-slide/3"],
   .hero-carousel:has(img[src*="/images/hero-3"]) img[src*="/images/hero-3"] {
     object-position: 62% center;
   }
 
-  .hero-carousel:has(img[src*="/hero-slide/4"]) img[src*="/hero-slide/4"],
   .hero-carousel:has(img[src*="/images/hero-4"]) img[src*="/images/hero-4"] {
     object-position: 70% center;
   }

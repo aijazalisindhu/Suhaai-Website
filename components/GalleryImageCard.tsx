@@ -4,14 +4,16 @@ type GalleryImageCardProps = {
   index: number;
   title: string;
   category: string;
+  caption?: string;
 };
 
-export default function GalleryImageCard({ index, title, category }: GalleryImageCardProps) {
+export default function GalleryImageCard({ index, title, category, caption }: GalleryImageCardProps) {
   return (
     <PlaceholderImage
       title={title}
       category={category}
-      imageSrc={`/hero-slide/gallery-${index}`}
+      caption={caption}
+      imageSrc={`/images/gallery/gallery-${index}.webp`}
     />
   );
 }
