@@ -136,3 +136,39 @@ a {
     object-position: 70% center;
   }
 }
+
+.gallery-card-title {
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.gallery-card-caption {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.gallery-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(6, 17, 30, 0.9) 0%,
+    rgba(6, 17, 30, 0.7) 30%,
+    rgba(6, 17, 30, 0.28) 58%,
+    rgba(6, 17, 30, 0) 100%
+  );
+}
+
+.gallery-card-badge {
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  background: rgba(6, 17, 30, 0.52);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
