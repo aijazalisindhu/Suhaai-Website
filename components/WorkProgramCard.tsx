@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 type WorkIcon = "book" | "bus" | "graduation" | "users" | "science" | "library";
@@ -75,9 +76,12 @@ export default function WorkProgramCard({
     <article className="group flex h-full flex-col rounded-3xl border border-amber-100 bg-white/90 p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-suhaai-gold/75 hover:shadow-[0_18px_42px_rgba(18,53,91,0.10)] sm:p-7">
       {image ? (
         <div className="mb-6 overflow-hidden rounded-2xl border border-suhaai-gold/25 bg-suhaai-cream shadow-sm">
-          <img
+          <Image
             src={image}
             alt={title}
+            width={720}
+            height={384}
+            sizes="(min-width: 1024px) 50vw, 100vw"
             className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
           />
         </div>

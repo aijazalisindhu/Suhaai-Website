@@ -1,11 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 
 const slides = [
   {
-    desktopImage: "/hero-slide/1?v=2",
+    desktopImage: "/images/hero-1.webp",
     mobileImage: "/images/hero/mobile/mobile-hero-1.webp",
     alt: "Suhaai students learning together",
     heading: "Illuminating Futures. Empowering Girls.",
@@ -16,7 +17,7 @@ const slides = [
     headingSize: "text-[34px] sm:text-[38px] md:text-[51px] lg:text-[55px]"
   },
   {
-    desktopImage: "/hero-slide/2?v=2",
+    desktopImage: "/images/hero-2.webp",
     mobileImage: "/images/hero/mobile/mobile-hero-2.webp",
     alt: "Village girls continuing education with Suhaai",
     heading: "Free Tuition for Village Girls",
@@ -27,7 +28,7 @@ const slides = [
     headingSize: "text-[36px] sm:text-[40px] md:text-[52px] lg:text-[56px]"
   },
   {
-    desktopImage: "/hero-slide/3?v=2",
+    desktopImage: "/images/hero-3.webp",
     mobileImage: "/images/hero/mobile/mobile-hero-3.webp",
     alt: "Suhaai classroom learning support",
     heading: "Learning with Confidence",
@@ -38,7 +39,7 @@ const slides = [
     headingSize: "text-[34px] sm:text-[38px] md:text-[48px] lg:text-[52px]"
   },
   {
-    desktopImage: "/hero-slide/4?v=2",
+    desktopImage: "/images/hero-4.webp",
     mobileImage: "/images/hero/mobile/mobile-hero-4.webp",
     alt: "Suhaai education initiative activities",
     heading: "Safe & Free Transport Support",
@@ -58,7 +59,8 @@ export default function HeroCarousel() {
       !failedImages.includes(slide.desktopImage) &&
       !failedImages.includes(slide.mobileImage)
   );
-  const currentSlide = visibleSlides[activeSlide] || slides[0];
+  const visibleIndex = visibleSlides.length ? activeSlide % visibleSlides.length : 0;
+  const currentSlide = visibleSlides[visibleIndex] || slides[0];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -68,38 +70,39 @@ export default function HeroCarousel() {
     return () => window.clearInterval(timer);
   }, [visibleSlides.length]);
 
-  useEffect(() => {
-    if (activeSlide >= visibleSlides.length) {
-      setActiveSlide(0);
-    }
-  }, [activeSlide, visibleSlides.length]);
 
   return (
     <section className="hero-carousel relative isolate min-h-[calc(100vh-80px)] overflow-hidden bg-suhaai-green">
       {visibleSlides.map((slide, index) => (
         <Fragment key={slide.desktopImage}>
-          <img
+          <Image
             src={slide.mobileImage}
             alt={slide.alt}
+            fill
+            sizes="100vw"
+            priority={index === 0}
             onError={() => {
               setFailedImages((current) =>
                 current.includes(slide.mobileImage) ? current : [...current, slide.mobileImage]
               );
             }}
             className={`absolute inset-0 block h-full w-full object-cover transition-opacity duration-1000 md:hidden ${
-              index === activeSlide ? "opacity-100" : "opacity-0"
+              index === visibleIndex ? "opacity-100" : "opacity-0"
             }`}
           />
-          <img
+          <Image
             src={slide.desktopImage}
             alt={slide.alt}
+            fill
+            sizes="100vw"
+            priority={index === 0}
             onError={() => {
               setFailedImages((current) =>
                 current.includes(slide.desktopImage) ? current : [...current, slide.desktopImage]
               );
             }}
             className={`absolute inset-0 hidden h-full w-full object-cover transition-opacity duration-1000 md:block ${slide.position} ${
-              index === activeSlide ? "opacity-100" : "opacity-0"
+              index === visibleIndex ? "opacity-100" : "opacity-0"
             }`}
           />
         </Fragment>
@@ -163,7 +166,7 @@ export default function HeroCarousel() {
             aria-label={`Show hero image ${index + 1}`}
             onClick={() => setActiveSlide(index)}
             className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-suhaai-gold focus:ring-offset-2 focus:ring-offset-suhaai-green ${
-              index === activeSlide ? "w-10 bg-suhaai-gold shadow-sm shadow-suhaai-gold/40" : "w-2.5 bg-white/55 hover:bg-white/90"
+              index === visibleIndex ? "w-10 bg-suhaai-gold shadow-sm shadow-suhaai-gold/40" : "w-2.5 bg-white/55 hover:bg-white/90"
             }`}
           />
         ))}
@@ -171,3 +174,5 @@ export default function HeroCarousel() {
     </section>
   );
 }
+
+

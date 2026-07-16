@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 /* eslint-disable react/no-unescaped-entities */
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -120,9 +121,12 @@ export default function AboutPage() {
     <>
       <section className="relative overflow-hidden bg-suhaai-green text-white">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/hero-1.webp"
             alt=""
+            fill
+            priority
+            sizes="100vw"
             className="h-full w-full object-cover opacity-34"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-suhaai-green via-suhaai-green/88 to-suhaai-green/58" />
@@ -271,9 +275,12 @@ export default function AboutPage() {
             </blockquote>
           </div>
           <div className="overflow-hidden rounded-3xl border border-amber-100 bg-white p-2 shadow-soft">
-            <img
+            <Image
               src="/images/about/transport-turning-point.webp"
               alt="Transport support for rural students"
+              width={760}
+              height={520}
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="h-[380px] w-full rounded-[1.25rem] object-cover"
             />
           </div>
@@ -283,9 +290,12 @@ export default function AboutPage() {
       <section className="section-padding bg-white">
         <div className="container-shell grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="overflow-hidden rounded-3xl border border-amber-100 bg-suhaai-cream p-2 shadow-soft">
-            <img
+            <Image
               src="/images/gallery/gallery-1.webp"
               alt="Village classroom learning support"
+              width={760}
+              height={520}
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="h-[360px] w-full rounded-[1.25rem] object-cover"
             />
           </div>
@@ -344,9 +354,12 @@ export default function AboutPage() {
                 className="group overflow-hidden rounded-3xl border border-amber-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-suhaai-gold/70 hover:shadow-[0_18px_45px_rgba(18,53,91,0.09)]"
               >
                 <div className="h-44 overflow-hidden bg-suhaai-cream">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
+                    width={520}
+                    height={320}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>

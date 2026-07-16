@@ -4,14 +4,10 @@ import { useState } from "react";
 import PlaceholderImage from "@/components/PlaceholderImage";
 
 const heroImagePaths = [
-  "/images/hero.jpg",
-  "/images/hero.jpeg",
-  "/images/hero.png",
-  "/images/hero.webp",
-  "/hero.jpg",
-  "/hero.jpeg",
-  "/hero.png",
-  "/hero.webp"
+  "/images/hero-1.webp",
+  "/images/hero-2.webp",
+  "/images/hero-3.webp",
+  "/images/hero-4.webp"
 ];
 
 export default function HeroImage() {
