@@ -11,6 +11,8 @@ const galleryObjectPositions = [
   "50% 48%"
 ];
 
+const galleryImageSizes = ["600px", "400px", "480px", "600px", "800px", "600px", "850px", "900px"];
+
 type GalleryImageCardProps = {
   index: number;
   title: string;
@@ -19,6 +21,7 @@ type GalleryImageCardProps = {
 
 export default function GalleryImageCard({ index, title, category }: GalleryImageCardProps) {
   const objectPosition = galleryObjectPositions[index - 1] ?? "50% 50%";
+  const imageSizes = galleryImageSizes[index - 1] ?? "600px";
 
   return (
     <article className="group relative h-[360px] overflow-hidden rounded-3xl border border-amber-100 bg-suhaai-cream shadow-soft transition duration-300 hover:-translate-y-1 hover:border-suhaai-gold/70 hover:shadow-[0_22px_52px_rgba(18,53,91,0.2)] sm:h-[380px] lg:h-[400px]">
@@ -26,7 +29,8 @@ export default function GalleryImageCard({ index, title, category }: GalleryImag
         src={`/images/gallery/gallery-${index}.webp`}
         alt={title}
         fill
-        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        sizes={imageSizes}
+        quality={90}
         className="absolute inset-0 h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.04] group-hover:saturate-[1.04]"
         style={{ objectPosition }}
       />
