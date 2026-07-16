@@ -15,10 +15,9 @@ type GalleryImageCardProps = {
   index: number;
   title: string;
   category: string;
-  caption?: string;
 };
 
-export default function GalleryImageCard({ index, title, category, caption }: GalleryImageCardProps) {
+export default function GalleryImageCard({ index, title, category }: GalleryImageCardProps) {
   const objectPosition = galleryObjectPositions[index - 1] ?? "50% 50%";
 
   return (
@@ -40,11 +39,6 @@ export default function GalleryImageCard({ index, title, category, caption }: Ga
         <h3 className="gallery-card-title mt-3 text-[1.35rem] font-black leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)] sm:text-2xl">
           {title}
         </h3>
-        {caption ? (
-          <p className="gallery-card-caption mt-2 text-sm font-semibold leading-5 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
-            {caption}
-          </p>
-        ) : null}
       </div>
     </article>
   );

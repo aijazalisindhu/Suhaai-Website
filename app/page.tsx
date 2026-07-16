@@ -209,7 +209,6 @@ export default function HomePage() {
                 index={index + 1}
                 title={item.title}
                 category={item.category}
-                caption={item.caption}
               />
             ))}
           </div>

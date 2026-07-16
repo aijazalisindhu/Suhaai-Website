@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 const categories = [
   "Classroom Activities",
   "Students Learning",
-  "Science Learning",
+  "Teaching Reports",
+  "Events",
   "Community Support",
-  "Digital Learning",
-  "Learning Resources"
+  "Posters and Campaigns"
 ];
 
 export default function GalleryPage() {
@@ -42,7 +42,6 @@ export default function GalleryPage() {
                 index={index + 1}
                 title={item.title}
                 category={item.category}
-                caption={item.caption}
               />
             ))}
           </div>

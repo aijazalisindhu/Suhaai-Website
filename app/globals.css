@@ -146,13 +146,6 @@ a {
   line-clamp: 2;
 }
 
-.gallery-card-caption {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-}
 
 .gallery-card-overlay {
   background: linear-gradient(
