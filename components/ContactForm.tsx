@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 export default function ContactForm() {
@@ -101,6 +102,7 @@ export default function ContactForm() {
           />
         </label>
 
+        <p className="text-sm leading-6">Your message is emailed to Suhaai. Read our <Link href="/privacy" className="underline underline-offset-4">Privacy Policy</Link>.</p>
         <button
           type="submit"
           disabled={status === "sending"}
@@ -110,7 +112,7 @@ export default function ContactForm() {
         </button>
 
         {statusMessage ? (
-          <p
+          <p role="status"
             className={`rounded-2xl border px-4 py-3 text-sm font-bold ${
               status === "error"
                 ? "border-red-200 bg-red-50 text-red-700"

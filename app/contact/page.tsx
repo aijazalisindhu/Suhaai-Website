@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import FeedbackForm from "@/components/FeedbackForm";
 import PageHero from "@/components/PageHero";
+import { contactHours } from "@/data/operations";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact",
   description: "Contact Suhaai to ask questions, support the mission, or learn more about girls education work in Village 21 Dadh."
 };
@@ -62,6 +64,15 @@ export default function ContactPage() {
                 />
               </div>
 
+              <div className="mt-6 grid gap-3 text-base font-semibold text-suhaai-green"><a href={`mailto:${email}`} className="break-all underline underline-offset-4">{email}</a><a href={whatsappHref} className="underline underline-offset-4">WhatsApp: +92 345 0122664</a></div>
+              <div className="mt-6 rounded-2xl bg-white p-5 text-left text-sm leading-7 text-suhaai-green">
+                <p className="font-bold">Visiting hours</p>
+                <p>{contactHours.visits}</p>
+                <p className="mt-3 font-bold">WhatsApp &amp; email availability</p>
+                <p>{contactHours.replies}</p>
+                <p className="mt-2 text-suhaai-ink/70">These are contact hours, not a guaranteed response time.</p>
+                <p className="mt-3 text-suhaai-ink/70">All times are {contactHours.timezone}.</p>
+              </div>
               <div className="mt-8 flex items-center justify-center gap-4">
                 <a
                   href={`mailto:${email}`}
@@ -157,7 +168,7 @@ export default function ContactPage() {
                 Share words that help Suhaai improve and grow
               </h2>
               <p className="mt-5 text-base font-semibold leading-8 text-suhaai-cream/86">
-                Feedback is sent privately to the Suhaai team. Selected approved
+                Feedback is sent privately to the Suhaai team. With your permission, selected
                 testimonials may be displayed later, but nothing is published
                 automatically.
               </p>

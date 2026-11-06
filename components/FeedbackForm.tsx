@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 export default function FeedbackForm() {
@@ -24,6 +25,7 @@ export default function FeedbackForm() {
         },
         body: JSON.stringify({
           type: "feedback",
+          publishConsent: formData.get("publishConsent") === "on",
           name: formData.get("name"),
           contact: formData.get("contact"),
           role: formData.get("role"),
@@ -76,7 +78,7 @@ export default function FeedbackForm() {
 
       <p className="mt-4 text-sm font-semibold leading-7 text-suhaai-ink/72">
         Your feedback will be sent privately to Suhaai for review. It will not appear
-        publicly on the website unless it is selected and approved.
+        publicly on the website unless you give permission and it is selected for publication.
       </p>
 
       <div className="mt-6 grid gap-5">
@@ -134,6 +136,12 @@ export default function FeedbackForm() {
           />
         </label>
 
+        <label className="flex items-start gap-3 text-sm leading-6 text-suhaai-green">
+          <input type="checkbox" name="publishConsent" className="mt-1 h-5 w-5 shrink-0 accent-suhaai-green" />
+          <span>Optional: Suhaai may publish my feedback, name, and role as a testimonial. My contact details will remain private.</span>
+        </label>
+        <p className="text-sm leading-6">Read our <Link href="/privacy" className="underline underline-offset-4">Privacy Policy</Link> to learn how messages are handled.</p>
+
         <button
           type="submit"
           disabled={status === "sending"}
@@ -143,7 +151,7 @@ export default function FeedbackForm() {
         </button>
 
         {statusMessage ? (
-          <p
+          <p role="status"
             className={`rounded-2xl border px-4 py-3 text-sm font-bold ${
               status === "error"
                 ? "border-red-200 bg-red-50 text-red-700"

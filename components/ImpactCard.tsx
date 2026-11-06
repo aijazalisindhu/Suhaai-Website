@@ -25,13 +25,14 @@ export default function ImpactCard({
           src={imageSrc}
           alt={imageAlt}
           fill
+          quality={60}
           sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
           loading="lazy"
         />
       </div>
       <div className="flex flex-1 flex-col p-7">
-        <p className="text-sm font-black uppercase tracking-[0.16em] text-suhaai-gold">
+        <p className="text-sm font-black uppercase tracking-[0.16em] text-[#805710]">
           {metric}
         </p>
         <h3 className="mt-3 text-xl font-extrabold text-suhaai-green">{title}</h3>

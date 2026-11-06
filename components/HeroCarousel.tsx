@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const slides = [
   {
@@ -51,10 +51,17 @@ const slides = [
   }
 ];
 
+const responsiveSlides = slides.map((slide) => ({
+  ...slide,
+  mobileProps: getImageProps({ src: slide.mobileImage, alt: slide.alt, fill: true, sizes: "100vw" }).props,
+  desktopProps: getImageProps({ src: slide.desktopImage, alt: slide.alt, fill: true, sizes: "100vw" }).props
+}));
+
 export default function HeroCarousel() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
   const [failedImages, setFailedImages] = useState<string[]>([]);
-  const visibleSlides = slides.filter(
+  const visibleSlides = responsiveSlides.filter(
     (slide) =>
       !failedImages.includes(slide.desktopImage) &&
       !failedImages.includes(slide.mobileImage)
@@ -63,49 +70,43 @@ export default function HeroCarousel() {
   const currentSlide = visibleSlides[visibleIndex] || slides[0];
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: number | undefined;
+    function updateTimer() {
+      window.clearInterval(timer);
+      if (paused || reducedMotion.matches) return;
+      timer = window.setInterval(() => {
       setActiveSlide((current) => (current + 1) % Math.max(visibleSlides.length, 1));
-    }, 5500);
-
-    return () => window.clearInterval(timer);
-  }, [visibleSlides.length]);
+      }, 5500);
+    }
+    updateTimer();
+    reducedMotion.addEventListener("change", updateTimer);
+    return () => {
+      window.clearInterval(timer);
+      reducedMotion.removeEventListener("change", updateTimer);
+    };
+  }, [visibleSlides.length, paused]);
 
 
   return (
     <section className="hero-carousel relative isolate min-h-[calc(100vh-80px)] overflow-hidden bg-suhaai-green">
       {visibleSlides.map((slide, index) => (
-        <Fragment key={slide.desktopImage}>
-          <Image
-            src={slide.mobileImage}
-            alt={slide.alt}
-            fill
-            sizes="100vw"
-            priority={index === 0}
-            onError={() => {
-              setFailedImages((current) =>
-                current.includes(slide.mobileImage) ? current : [...current, slide.mobileImage]
-              );
-            }}
-            className={`absolute inset-0 block h-full w-full object-cover transition-opacity duration-1000 md:hidden ${
-              index === visibleIndex ? "opacity-100" : "opacity-0"
-            }`}
+        <picture key={slide.desktopImage}>
+          <source media="(min-width: 768px)" srcSet={slide.desktopProps.srcSet} sizes="100vw" />
+          <source media="(max-width: 767px)" srcSet={slide.mobileProps.srcSet} sizes="100vw" />
+          {/* getImageProps preserves Next image optimization while picture downloads only the matching crop. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img {...slide.mobileProps}
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "low"}
+            alt={index === visibleIndex ? slide.alt : ""}
+            aria-hidden={index !== visibleIndex}
+            onError={() => setFailedImages((current) =>
+              current.includes(slide.mobileImage) ? current : [...current, slide.mobileImage]
+            )}
+            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-1000 ${slide.position.split(" ").filter((item) => item.startsWith("md:") || item.startsWith("lg:")).join(" ")} ${index === visibleIndex ? "opacity-100" : "opacity-0"}`}
           />
-          <Image
-            src={slide.desktopImage}
-            alt={slide.alt}
-            fill
-            sizes="100vw"
-            priority={index === 0}
-            onError={() => {
-              setFailedImages((current) =>
-                current.includes(slide.desktopImage) ? current : [...current, slide.desktopImage]
-              );
-            }}
-            className={`absolute inset-0 hidden h-full w-full object-cover transition-opacity duration-1000 md:block ${slide.position} ${
-              index === visibleIndex ? "opacity-100" : "opacity-0"
-            }`}
-          />
-        </Fragment>
+        </picture>
       ))}
 
       <div
@@ -159,6 +160,11 @@ export default function HeroCarousel() {
       </div>
 
       <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-suhaai-green/28 px-3 py-2 shadow-lg shadow-black/15 backdrop-blur-md md:bottom-7">
+        <button type="button" onClick={() => setPaused((value) => !value)} aria-pressed={paused}
+          aria-label="Pause automatic slideshow"
+          className="rounded-full px-3 py-2 text-sm font-bold text-white focus:outline-none focus:ring-2 focus:ring-suhaai-gold">
+          {paused ? "Resume" : "Pause"}
+        </button>
         {visibleSlides.map((slide, index) => (
           <button
             key={slide.desktopImage}

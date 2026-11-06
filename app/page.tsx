@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import GalleryImageCard from "@/components/GalleryImageCard";
@@ -10,6 +11,8 @@ import ProgramPreviewCard from "@/components/ProgramPreviewCard";
 import SectionHeading from "@/components/SectionHeading";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { galleryItems } from "@/data/site";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const impact = [
   {

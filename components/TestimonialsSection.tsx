@@ -84,7 +84,7 @@ export default function TestimonialsSection() {
                   <p className="text-base font-black leading-6 text-suhaai-green md:text-lg">
                     {testimonial.name}
                   </p>
-                  <p className="mt-1 flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-suhaai-gold">
+                  <p className="mt-1 flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-[#805710]">
                     <svg
                       aria-hidden="true"
                       className="h-3.5 w-3.5 shrink-0"
@@ -151,7 +151,7 @@ export default function TestimonialsSection() {
                 >
                   {activeTestimonial.name}
                 </p>
-                <p className="mt-1 text-xs font-black uppercase tracking-[0.18em] text-suhaai-gold">
+                <p className="mt-1 text-xs font-black uppercase tracking-[0.18em] text-[#805710]">
                   {activeTestimonial.role}
                 </p>
               </div>

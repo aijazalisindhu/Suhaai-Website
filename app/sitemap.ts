@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const routes = ["", "/about", "/our-work", "/gallery", "/support-us", "/contact"];
+const routes = ["", "/about", "/our-work", "/gallery", "/support-us", "/contact", "/updates", "/volunteer", "/privacy"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://suhaai.org";

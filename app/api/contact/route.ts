@@ -9,6 +9,7 @@ type ContactPayload = {
   email?: unknown;
   contact?: unknown;
   role?: unknown;
+  publishConsent?: unknown;
   message?: unknown;
   website?: unknown;
   startedAt?: unknown;
@@ -20,6 +21,7 @@ type EmailMessage = {
   contact: string;
   replyTo?: string;
   role?: string;
+  publishConsent?: boolean;
   message: string;
 };
 
@@ -116,7 +118,7 @@ function openTlsSocket(host: string, port: number) {
   });
 }
 
-async function sendEmail({ type, name, contact, replyTo, role, message }: EmailMessage) {
+async function sendEmail({ type, name, contact, replyTo, role, message, publishConsent }: EmailMessage) {
   const host = process.env.SMTP_HOST || "smtp.gmail.com";
   const port = Number(process.env.SMTP_PORT || "465");
   const user = process.env.SMTP_USER;
@@ -195,6 +197,7 @@ async function sendEmail({ type, name, contact, replyTo, role, message }: EmailM
       `Name: ${name}`,
       `${type === "feedback" ? "Email or WhatsApp" : "Email"}: ${contact}`,
       ...(role ? [`Role / Relationship: ${role}`] : []),
+      ...(type === "feedback" ? [`Permission to publish feedback, name and role: ${publishConsent === true ? "YES" : "NO - keep private"}`] : []),
       "",
       type === "feedback" ? "Feedback:" : "Message:",
       message
@@ -291,6 +294,7 @@ export async function POST(request: Request) {
         contact,
         replyTo: isValidEmail(contact) ? contact : undefined,
         role,
+        publishConsent: payload.publishConsent === true,
         message
       });
 

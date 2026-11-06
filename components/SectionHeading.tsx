@@ -1,4 +1,5 @@
 type SectionHeadingProps = {
+  as?: "h1" | "h2";
   eyebrow?: string;
   title: string;
   description?: string;
@@ -6,6 +7,7 @@ type SectionHeadingProps = {
 };
 
 export default function SectionHeading({
+  as: Heading = "h2",
   eyebrow,
   title,
   description,
@@ -18,9 +20,9 @@ export default function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="mt-3 text-3xl font-black tracking-tight text-suhaai-green md:text-4xl">
+      <Heading className="mt-3 text-3xl font-black tracking-tight text-suhaai-green md:text-4xl">
         {title}
-      </h2>
+      </Heading>
       {description ? (
         <p className="mt-4 text-base leading-7 text-suhaai-ink/72 md:text-lg">
           {description}

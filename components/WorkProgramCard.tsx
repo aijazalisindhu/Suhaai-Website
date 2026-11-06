@@ -114,7 +114,7 @@ export default function WorkProgramCard({
           href={href}
           className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-suhaai-gold bg-suhaai-gold px-4 py-2 text-sm font-extrabold text-suhaai-green shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#e2a92f] hover:bg-[#e2a92f] hover:shadow-[0_12px_28px_rgba(244,185,66,0.28)] focus:outline-none focus:ring-2 focus:ring-suhaai-gold focus:ring-offset-2"
         >
-          Learn More
+          Support This Program
           <span
             aria-hidden="true"
             className="transition-transform duration-300 group-hover:translate-x-0.5"

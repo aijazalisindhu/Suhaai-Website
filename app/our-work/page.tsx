@@ -5,6 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 import WorkProgramCard from "@/components/WorkProgramCard";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/our-work" },
   title: "Our Work",
   description: "Explore Suhaai programs including free tuition, free transport, girls education support, study circles, and learning resources."
 };
@@ -115,7 +116,7 @@ export default function OurWorkPage() {
     <>
       <section className="section-padding bg-[radial-gradient(circle_at_top_left,rgba(244,185,66,0.18),transparent_34%),linear-gradient(180deg,#FFF8ED_0%,#FFFDF8_52%,#FFF8ED_100%)]">
         <div className="container-shell">
-          <SectionHeading
+          <SectionHeading as="h1"
             title="Our Work"
             description="Creating access to education, confidence, and opportunity for rural girls in Sindh."
           />

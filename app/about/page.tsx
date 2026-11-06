@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import Link from "next/link";
+import { teachingTeam, reportingPeriod } from "@/data/operations";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About",
   description:
     "Learn the story of Suhaai, a village-based education initiative from Village 21 Dadh working for rural girls education in Sindh."
@@ -60,15 +62,18 @@ const provisions = [
 ];
 
 const impact = [
-  { value: "300+", label: "Students Connected with Learning Support" },
-  { value: "3", label: "Free Transport Rickshaws" },
-  { value: "60+", label: "Girls Attending City High School" },
+  { value: "300+", label: "Students Currently Supported" },
+  { value: "3", label: "Student Transport Rickshaws" },
+  { value: "64+", label: "Girls Attending City High School" },
   { value: "3", label: "Additional Classrooms Built" },
   { value: "1", label: "Book Bank & Library Started" },
-  { value: "2026", label: "Girls Expected to Reach College and University Level" }
+  { value: "1", label: "Teacher Transport Rickshaw" },
+  { value: "18", label: "Girls Who Have Reached College" },
+  { value: "1", label: "Girl Studying at University" }
 ];
 
 const vision = [
+  "Support girls as they progress to college and university",
   "More village-based learning centers",
   "Computer lab facilities",
   "Science lab facilities",
@@ -417,9 +422,17 @@ export default function AboutPage() {
               A Village-Level Education Movement
             </h2>
             <p className="mt-5 text-lg leading-8 text-suhaai-cream/82">
-              Over the past three years, Suhaai has grown from a small effort into a
+              Suhaai has grown from a small effort into a
               village-level education movement.
             </p>
+            <p className="mt-4 text-sm font-bold text-suhaai-gold">Impact update: {reportingPeriod}</p>
+            <p className="mt-4 text-base leading-8 text-suhaai-cream/90">Previously, only 6 girls from the village attended high school in the city. Now, 64+ girls attend. Suhaai currently supports over 300 students, with three rickshaws for students and one for teachers. Eighteen girls have reached college, and one girl is studying Data Science at Quaid-e-Awam University.</p>
+            <div className="mt-8 rounded-3xl bg-suhaai-cream p-6">
+              <h3 className="text-2xl font-bold text-suhaai-green">Our All-Female Teaching Team</h3>
+              <ul className="mt-4 grid list-inside list-disc gap-3 text-suhaai-green sm:grid-cols-2">
+                {teachingTeam.map((role) => <li key={role}>{role}</li>)}
+              </ul>
+            </div>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {impact.map((item) => (

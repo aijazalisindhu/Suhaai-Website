@@ -22,7 +22,7 @@ export default function Footer() {
             Pages
           </h2>
           <div className="mt-4 grid gap-3">
-            {navLinks.map((link) => (
+            {[...navLinks, { href: "/updates", label: "Updates & Impact" }, { href: "/volunteer", label: "Volunteer" }, { href: "/privacy", label: "Privacy Policy" }].map((link) => (
               <Link key={link.href} href={link.href} className="text-sm text-white/80 hover:text-suhaai-amber">
                 {link.label}
               </Link>
