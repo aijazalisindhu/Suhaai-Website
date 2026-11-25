@@ -13,12 +13,12 @@ export default function Logo() {
   const [showImageLogo, setShowImageLogo] = useState(true);
 
   return (
-    <Link href="/" className="group flex items-center gap-3" aria-label="Suhaai home">
+    <Link href="/" className="group flex items-center gap-3">
       {showImageLogo ? (
         <Image
           key={logoPaths[logoIndex]}
           src={logoPaths[logoIndex]}
-          alt="Suhaai logo"
+          alt=""
           width={56}
           height={56}
           className="h-14 w-14 rounded-full bg-white object-cover shadow-md shadow-black/20 ring-2 ring-suhaai-gold/50 transition-transform group-hover:scale-105"

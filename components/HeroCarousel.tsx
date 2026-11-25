@@ -160,9 +160,9 @@ export default function HeroCarousel() {
       </div>
 
       <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-suhaai-green/28 px-3 py-2 shadow-lg shadow-black/15 backdrop-blur-md md:bottom-7">
-        <button type="button" onClick={() => setPaused((value) => !value)} aria-pressed={paused}
-          aria-label="Pause automatic slideshow"
-          className="rounded-full px-3 py-2 text-sm font-bold text-white focus:outline-none focus:ring-2 focus:ring-suhaai-gold">
+        <button type="button" onClick={() => setPaused((value) => !value)}
+          aria-label={paused ? "Resume automatic slideshow" : "Pause automatic slideshow"}
+          className="min-h-11 rounded-full px-3 py-2 text-sm font-bold text-white focus:outline-none focus:ring-2 focus:ring-suhaai-gold">
           {paused ? "Resume" : "Pause"}
         </button>
         {visibleSlides.map((slide, index) => (
@@ -171,10 +171,11 @@ export default function HeroCarousel() {
             type="button"
             aria-label={`Show hero image ${index + 1}`}
             onClick={() => setActiveSlide(index)}
-            className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-suhaai-gold focus:ring-offset-2 focus:ring-offset-suhaai-green ${
-              index === visibleIndex ? "w-10 bg-suhaai-gold shadow-sm shadow-suhaai-gold/40" : "w-2.5 bg-white/55 hover:bg-white/90"
-            }`}
-          />
+            aria-pressed={index === visibleIndex}
+            className="flex h-11 w-11 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-suhaai-gold focus:ring-offset-2 focus:ring-offset-suhaai-green"
+          >
+            <span aria-hidden="true" className={`h-2.5 rounded-full transition-all duration-300 ${index === visibleIndex ? "w-10 bg-suhaai-gold" : "w-2.5 bg-white/70"}`} />
+          </button>
         ))}
       </div>
     </section>
