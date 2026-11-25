@@ -18,7 +18,8 @@ const supportOptions = [
 const materialNeeds = [
   { title: "Library Reading Books", description: "Donate storybooks and reading books in Urdu, Sindhi, and English for our library. We are seeking reading books, not school textbooks: the girls already have their textbooks.", subject: "donating library storybooks and reading books" },
   { title: "Science Kits & Lab Equipment", description: "Help students explore science through practical activities. Support science kits and equipment for hands-on experiments and a science lab.", subject: "supporting science kits and lab equipment" },
-  { title: "Multimedia Learning", description: "Support multimedia lessons, demonstrations, and educational sessions with laptops, a projector, and other learning equipment. You can also help establish a computer lab where students can develop computer skills and explore digital learning.", subject: "supporting multimedia learning and a computer lab" }
+  { title: "Multimedia Learning", description: "Support multimedia lessons, demonstrations, and educational sessions with a projector, laptops, and other learning equipment.", subject: "supporting multimedia learning" },
+  { title: "Computer Lab", description: "Help establish a computer lab with working computers or laptops and the equipment needed for students to practise computer skills and explore digital learning.", subject: "supporting a computer lab" }
 ];
 
 function whatsappLink(subject: string) {
@@ -74,7 +75,7 @@ export default function SupportUsPage() {
         <div className="container-shell">
           <h2 id="learning-materials" className="text-3xl font-black text-suhaai-green">Support Our Library, Science &amp; Digital Learning</h2>
           <p className="mt-4 max-w-3xl leading-8 text-suhaai-ink/80">If you would like to offer books or equipment, please contact us first to discuss suitable materials, working condition, and delivery arrangements.</p>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">{materialNeeds.map((need) => (
+          <div className="mt-8 grid gap-6 md:grid-cols-2">{materialNeeds.map((need) => (
             <article key={need.title} className="flex flex-col rounded-3xl border border-amber-100 bg-white p-7">
               <h3 className="text-2xl font-bold text-suhaai-green">{need.title}</h3>
               <p className="mt-4 flex-1 leading-7 text-suhaai-ink/80">{need.description}</p>
