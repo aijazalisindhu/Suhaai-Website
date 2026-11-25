@@ -18,7 +18,7 @@ const supportOptions = [
 const materialNeeds = [
   { title: "Library Reading Books", description: "Donate storybooks and reading books in Urdu, Sindhi, and English for our library. We are seeking reading books, not school textbooks: the girls already have their textbooks.", subject: "donating library storybooks and reading books" },
   { title: "Science Kits & Lab Equipment", description: "Help students explore science through practical activities. Support science kits and equipment for hands-on experiments and a science lab.", subject: "supporting science kits and lab equipment" },
-  { title: "Laptops & a Projector", description: "Support digital learning with working laptops and a projector for lessons, demonstrations, and educational sessions.", subject: "supporting laptops and a projector" }
+  { title: "Multimedia Learning", description: "Support multimedia lessons, demonstrations, and educational sessions with laptops, a projector, and other learning equipment. You can also help establish a computer lab where students can develop computer skills and explore digital learning.", subject: "supporting multimedia learning and a computer lab" }
 ];
 
 function whatsappLink(subject: string) {
