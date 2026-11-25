@@ -8,7 +8,7 @@ export const monthlyExpenses = [
   { label: "Security / caretaker", quantity: 1, unitCost: 15000 },
   { label: "Student transport", quantity: 3, unitCost: 18500 },
   { label: "Teacher transport", quantity: 1, unitCost: 18500 },
-  { label: "Free notebook distribution", quantity: 1, unitCost: 6500 },
+  { label: "Stationery & notebooks", quantity: 1, unitCost: 15000 },
   { label: "Student support & prizes", quantity: 1, unitCost: 5000 },
   { label: "Repairs & maintenance", quantity: 1, unitCost: 5000 }
 ];
